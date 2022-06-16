@@ -21,15 +21,28 @@ window.onload = () => {
             .then((response) => {
                 return response.json()
             })
-            .then((data) => {
+            .then((object) => {
                 // Work with JSON data here
-                console.log(data.sensors)
+                console.log(object.sensors)
                 JSONApi = data;
             })
             .catch((err) => {
                 // Do something for an error here
             })
     }
+
+    function PruebaJson () {
+
+        fetch('/Resource/Pruebas.json')
+        .then((response) => {
+            return response.json();
+        })
+        .then((object) => {
+            console.log(object.sensors[0].data[0])
+        })
+    }
+
+    PruebaJson();
 
     
 
