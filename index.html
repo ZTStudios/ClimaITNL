@@ -9,16 +9,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
     <script src="JS/scriptMain.js"></script>
     <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="Container__Card">
-        <div class="Card-container">
-            <img class="icono-Temperatura" src="Resource/Icons/Sun Cloud2.svg" alt="IconSun">
-            <div class="info-Container">
-                <h1 class="Temperatura-Data">35</h1>
-                <p class="Temperatura-SubData">℃</p>
+    <main class="main">
+        <div class="card-container">
+            <div class="card-content">
+                <img class="icono-temperatura" src="Resource/Icons/Sun_Cloud.png" alt="IconSun">
+                <div class="contenedor-temperatura">
+                    <h1 class="temperatura">35</h1>
+                    <p class="grados">°C</p>
+                </div>
+                <p class="condicion">Nublado</p>
+                <p class="ciudad">Nuevo Laredo</p>
+                <p class="fecha">17 DE JUNIO  DEL 2022</pass=>
+                <!-- <img class="icono-humedad" src="Resource/Icons/Humedad.png" alt="IconHumedad"> -->
+                <p class="humedad">50%</p=>  <!--Humedad-->
+                <!--<img class="icono-viento" src="Resource/Icons/Humedad.png" alt="IconViento">-->
+                <p class="velocidadViento">mph</p>  <!--Velocidad viento-->
+                <!--UPDATING-->
+                <div class="card-update">
+                    <span class="dot"></span><p>Actualizando</p><span class="dot"></span>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 </body>
 </html>
