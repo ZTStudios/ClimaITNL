@@ -85,6 +85,7 @@ body {
     width: 853px;
     height: 437px;
     background-color: white;
+    box-shadow: 4px 25px 50px 1px rgba(0, 0, 0, 0.25);
     border-radius: 25px;
 }
 
@@ -92,6 +93,7 @@ body {
     width: 198px;
     height: 200px;
     background-color: white;
+    box-shadow: 4px 25px 50px 1px rgba(0, 0, 0, 0.25);
     border-radius: 25px;
 }
 
@@ -99,5 +101,6 @@ body {
     width: 590px;
     height: 200px;
     background-color: white;
+    box-shadow: 4px 25px 50px 1px rgba(0, 0, 0, 0.25);
     border-radius: 25px;
 }
