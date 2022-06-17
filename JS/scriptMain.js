@@ -36,10 +36,11 @@ window.onload = () => {
                 }
                 else{
                     document.body.style.backgroundImage = "url('../Resource/WallapaperState/NocheWall.png')"
+                    let Card = document.body.querySelector('.Dashboard-Container-Medium');
                 }
             })    
-    }
 
+    }
     CargarWallpaper()
 
     
