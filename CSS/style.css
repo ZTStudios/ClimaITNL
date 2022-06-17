@@ -5,15 +5,16 @@ body {
     height: 200vh;
 }
 
-nav{
+.nav{
     position: absolute;
     left: 6.2%;
     right: 6.25%;
     top: 2.53%;
     bottom: 90.66%;
-
-    background: #FFFFFF;
-    opacity: 0.2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: #ffffff42;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(32px);
     border-radius: 52px;
@@ -24,10 +25,14 @@ nav{
     flex-direction: row;
     list-style: none;
     align-items: center;
+    color: white;
+    opacity: 100%;
 }
 .nav__ul-right-elements{
     display: flex;
     flex-direction: row;
+    gap: 15px;
+    padding-right: 2%;
     list-style: none;
     align-items: center;
 }
