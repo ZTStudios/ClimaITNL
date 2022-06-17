@@ -36,13 +36,33 @@ window.onload = () => {
                 }
                 else{
                     document.body.style.backgroundImage = "url('../Resource/WallapaperState/NocheWall.png')"
+                    ModoOscuroON()
                 }
             })    
+
     }
 
-    CargarWallpaper()
+    function ModoOscuroON() {
+        Medium = document.getElementsByClassName('Dashboard-Container-Medium');
+        for (var i = 0; i < Medium.length; i++) {
+            Medium[i].style.backgroundColor="#474759";
+        }
 
-    
+        document.querySelector('.Dashboard-Container-Big').style.backgroundColor = '#474759'
+
+        Small = document.getElementsByClassName('Dashboard-Container-Small');
+        for (var i = 0; i < Medium.length; i++) {
+            Small[i].style.backgroundColor="#474759";
+        }
+
+        Rain = document.getElementsByClassName('Dashboard-Container-Rain');
+        for (var i = 0; i < Rain.length; i++) {
+            Rain[i].style.backgroundColor="#474759";
+        }
+    }
+
+
+    CargarWallpaper()
     
 }   
     
