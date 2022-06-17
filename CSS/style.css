@@ -5,5 +5,41 @@ body {
     height: 200vh;
 }
 
+.Container__Card {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 450px;
+    height: 628px;
+}
+
+.icono-Temperatura {
+    width: 200px;
+}
+
+.info-Container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.Temperatura-Data {
+    color: white;
+    margin: 0;
+    display: inline;
+}
+
+.Temperatura-SubData {
+    color: white;
+    display: inline;
+}
 
 
