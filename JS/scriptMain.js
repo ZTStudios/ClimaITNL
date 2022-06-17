@@ -60,8 +60,6 @@ window.onload = () => {
             Rain[i].style.backgroundColor="#474759";
         }
     }
-
-
     CargarWallpaper()
     
 }   
