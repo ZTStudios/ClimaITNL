@@ -1,4 +1,3 @@
-
 *{
     box-sizing: border-box;
 }
@@ -24,6 +23,43 @@ body{
     background-repeat: no-repeat;
 }
 
+/* ===========================> STYLES NAV */
+
+.nav{
+    position: absolute;
+    left: 6.2%;
+    right: 6.25%;
+    top: 2.53%;
+    bottom: 90.66%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: #ffffff42;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(32px);
+    border-radius: 52px;
+}
+
+.nav__ul-left-elements{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    align-items: center;
+    color: white;
+    opacity: 100%;
+}
+.nav__ul-right-elements{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding-right: 2%;
+    list-style: none;
+    align-items: center;
+}
+
+/* ===========================> STYLES NAV */
+
+/* ===========================> STYLES CARD */
 .main{
     display: flex;
     justify-content: center;
@@ -40,7 +76,6 @@ body{
     left: 94px;
     top: 105px;
     border-radius: 48px;
-
     box-shadow: 0px 4px 4px rgba(0, 0, 0, .1);
     backdrop-filter: blur(32px);
     transition: 0.3s;
@@ -79,17 +114,19 @@ body{
 .temperatura{
     font-size: 144px;
     font-weight: 300;
-    
+    margin: 0;
 }
 
 .grados{
     font-size: 1.3rem;
     font-weight: 200;
+    margin: 0;
 }
 
 
 .contenedor-temperatura{
     display: flex;
+    margin: 0;
 }
 
 .contenedor-temperatura .grados{
@@ -115,6 +152,7 @@ body{
     font-weight: 300;
     font-size: 18px;
     line-height: 27px;
+    margin: 0;
 }
 
 .ciudad{
@@ -122,6 +160,7 @@ body{
     font-weight: 600;
     font-size: 24px;
     line-height: 36px;
+    margin: 0;
 }
 
 .fecha{
@@ -129,6 +168,11 @@ body{
     font-weight: 300;
     font-size: 20px;
     line-height: 30px;
+    margin: 0;
+}
+
+.fecha__Show {
+    margin: 0;
 }
 
 .row {
@@ -158,53 +202,18 @@ body{
     display: flex;
 }
 
-.Actualizacion{
-    width: 10px;
-    height: 10px;
+.actualizacion{
     display: flex;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin: 0;
 }
 
 .ColorModeON{
     background-color: #494957;
 }
 
-.nav{
-    position: absolute;
-    left: 6.2%;
-    right: 6.25%;
-    top: 2.53%;
-    bottom: 90.66%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background: #ffffff42;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(32px);
-    border-radius: 52px;
-}
+/* ===========================> STYLES CARD */
 
-.nav__ul-left-elements{
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    align-items: center;
-    color: white;
-    opacity: 100%;
-}
-.nav__ul-right-elements{
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    padding-right: 2%;
-    list-style: none;
-    align-items: center;
-}
-.Container-Full {
-    width: 100%;
-    height: 100vh;
-}
+/* ===========================> STYLES DASHBOARD */
 
 .Dashboard__Container-Main {
     width: 100%;
@@ -377,3 +386,5 @@ body{
     flex-direction: column;
     align-items: center;
 }
+
+/* ===========================> STYLES DASHBOARD */
