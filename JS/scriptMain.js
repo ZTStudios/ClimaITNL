@@ -4,7 +4,6 @@ window.onload = () => {
         
     let LinkA = 'https://api.openweathermap.org/data/2.5/weather?lat=27.48&lon=-99.5105&units=metric&lang=sp&appid=75388a5617c4890016f8215a20d3ac3f';
     
-    
     async function CargarWallpaper() {
         
         let HoraActual = new Date();
@@ -20,18 +19,28 @@ window.onload = () => {
 
                     if (ObjJson.weather[0].main == 'Clear') {
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/SoleadoWall.png')"
+                        document.querySelector('.card-container').style.backgroundColor = "#ffb7002d";
+                        //document.querySelector('.icono-temperatura') = "url('../Resource/Iconos/Card/Sun Cloud.svg')"
                     }
                     if (ObjJson.weather[0].main == 'Clouds') {
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/NubladoWall.png')"
+                        document.querySelector('.card-container').style.backgroundColor = "#B5B5B4";
+                        //document.querySelector('.icono-temperatura') = "url('../Resource/Iconos/Card/Clouds.svg')"
                     }
                     if (ObjJson.weather[0].main == 'Rain'){
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/LluviaWall.png')"
+                        document.querySelector('.card-container').style.backgroundColor = "#526196";
+                        //document.querySelector('.icono-temperatura') = "url('../Resource/Iconos/Card/Rain Cloud.svg')"
                     }
                     if (ObjJson.weather[0].main == 'Thunderstorm'){
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/TormentaWall.png')"
+                        document.querySelector('.card-container').style.backgroundColor = "#182935";
+                        //document.querySelector('.icono-temperatura') = "url('../Resource/Iconos/Card/Thunder Cloud.svg')"
                     }
                     if (ObjJson.weather[0].main == 'Snow'){
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/NevadoWall.png')"
+                        document.querySelector('.card-container').style.backgroundColor = "#6D9497";
+                        //document.querySelector('.icono-temperatura') = "url('../Resource/Iconos/Card/Snow Cloud.svg')"
                     } 
                 }
                 else{
@@ -47,7 +56,7 @@ window.onload = () => {
         for (var i = 0; i < Medium.length; i++) {
             Medium[i].style.backgroundColor="#474759";
         }
-
+      
         document.querySelector('.Dashboard-Container-Big').style.backgroundColor = '#474759'
 
         Small = document.getElementsByClassName('Dashboard-Container-Small');

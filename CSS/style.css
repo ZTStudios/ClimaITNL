@@ -1,14 +1,169 @@
+
+*{
+    box-sizing: border-box;
+}
+
 html{
     scroll-behavior: smooth;
 }
 
-body {
+:root{
+    --light-mode:#ffffff;
+    --dark-mode:#000000;
+}
+
+
+body{
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 200vh;
-    box-sizing: border-box;
+    margin: 0;
     font-family: 'Poppins', sans-serif;
+    color: var(--light-mode);
+    background-position:center ;
+    background-position-y: -200px;
+    background-repeat: no-repeat;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 450px;
+    height: 575px;
+    left: 94px;
+    top: 105px;
+    border-radius: 48px;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, .1);
+    backdrop-filter: blur(32px);
+    transition: 0.3s;
+    /*opacity: 0.2;*/
+    z-index: 0 ;
+}
+
+.card-content{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: -80px;
+}
+
+.container-img {
+    position: relative;
+    top: -50px;
+}
+
+.card-update{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0px 15px;
+    backdrop-filter: blur(32px);
+    transition: 0.3s;
+    border: 1px solid white;
+    border-radius: 50px;
+    border-radius: 48px;
+    z-index: 0 ;
+}
+
+.temperatura{
+    font-size: 144px;
+    font-weight: 300;
+    
+}
+
+.grados{
+    font-size: 1.3rem;
+    font-weight: 200;
+}
+
+
+.contenedor-temperatura{
+    display: flex;
+}
+
+.contenedor-temperatura .grados{
+    padding-top: 21%;   
+}
+
+.icono-temperatura{
+    width: 310px;
+    height: 204px;
+    margin: 0;
+}
+
+.informacion-Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: -40px;
+}
+
+.condicion{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.ciudad{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.fecha{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -20px;
+}
+
+.humedad{
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.velocidadviento{
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.dot{
+    width: 10px;
+    height: 10px;
+    background-color: #39ff14;
+    margin: 0 1px;
+    border-radius: 50%;
+    display: flex;
+}
+
+.Actualizacion{
+    width: 10px;
+    height: 10px;
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .ColorModeON{
