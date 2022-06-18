@@ -1,40 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clima ITNL</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
-    <script src="JS/scriptMain.js"></script>
-    <link rel="stylesheet" href="/CSS/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <main class="main">
-        <div class="card-container">
-            <div class="card-content">
-                <img class="icono-temperatura" src="Resource/Icons/Sun_Cloud.png" alt="IconSun">
-                <div class="contenedor-temperatura">
-                    <h1 class="temperatura">35</h1>
-                    <p class="grados">°C</p>
-                </div>
-                <p class="condicion">Nublado</p>
-                <p class="ciudad">Nuevo Laredo</p>
-                <p class="fecha">17 DE JUNIO  DEL 2022</pass=>
-                <!-- <img class="icono-humedad" src="Resource/Icons/Humedad.png" alt="IconHumedad"> -->
-                <p class="humedad">50%</p=>  <!--Humedad-->
-                <!--<img class="icono-viento" src="Resource/Icons/Humedad.png" alt="IconViento">-->
-                <p class="velocidadViento">mph</p>  <!--Velocidad viento-->
-                <!--UPDATING-->
-                <div class="card-update">
-                    <span class="dot"></span><p>Actualizando</p><span class="dot"></span>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clima ITNL</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
+        <script src="JS/scriptMain.js"></script>
+        <link rel="stylesheet" href="/CSS/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <main class="main">
+            <div class="card-container">
+                <div class="card-content">
+                    <img class="icono-temperatura" src="Resource/Icons/Card/Clouds.svg" alt="Icon">
+                    <div class="contenedor-temperatura">
+                        <h1 class="temperatura">35</h1>
+                        <p class="grados">°C</p>
+                    </div>
+                    <p class="condicion">
+                        Nublado
+                    </p>
+                    <p class="ciudad">
+                        Nuevo Laredo, Tamps, Mex.
+                    </p>
+                    <div id="current_date" class="fecha">
+                        <script>
+                            date = new Date();
+                            year = date.getFullYear();
+                            month = date.getMonth() + 1;
+                            day = date.getDate();
+                            switch(month){
+                                case 1 : mes = "ENERO";
+                                break;
+                                case 2 : mes = "FEBRERO";
+                                break;
+                                case 3 : mes = "MARZO";
+                                break;
+                                case 4 : mes = "ABRIL";
+                                break;
+                                case 5 : mes = "MAYO";
+                                break;
+                                case 6 : mes = "JUNIO";
+                                break;
+                                case 7 : mes = "JULIO";
+                                break;
+                                case 8 : mes = "AGOSTO";
+                                break;
+                                case 9 : mes = "SEPTIEMBRE";
+                                break;
+                                case 10 : mes = "OCTUBRE";
+                                break;
+                                case 11 : mes = "NOVIEMBRE";
+                                break;
+                                case 12 : mes = "DICIEMBRE";
+                                break;
+                            }
+                            document.getElementById("current_date").innerHTML = day + " DE " + mes + " DEL " + year;
+                            </script>
+                    </div>
+                    <div class="row">
+                        <img class="icono-humedad" src="Resource/Icons/Card/Card-Humidity.svg" alt="IconHumedad">
+                        <span class="humedad">
+                            50%
+                        </span>  <!--Humedad-->
+                        <img class="icono-viento" src="Resource/Icons/Card/Card-Wind.svg" alt="IconViento">
+                        <span class="velocidadViento">
+                           5 mph
+                        </span>  <!--Velocidad viento-->
+                    </div>                   
+                    <!--DIV UPDATING-->
+                    <div class="card-update">
+                        <span class="dot"></span><p>Actualizando</p><span class="dot"></span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
-</body>
+        </main>
+    </body>
 </html>

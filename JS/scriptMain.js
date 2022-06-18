@@ -21,27 +21,33 @@ window.onload = () => {
                     if (ObjJson.weather[0].main == 'Clear') {
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/SoleadoWall.png')"
                         document.querySelector('.card-container').style.backgroundColor = "#ffb7002d";
+                        //document.querySelector('.icono-temperatura') = "url('../Resource/Icons/Card/Sun Cloud.svg')"
                     }
                     if (ObjJson.weather[0].main == 'Clouds') {
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/NubladoWall.png')"
-                        document.querySelector('.card-container').style.backgroundColor = "#182935";
+                        document.querySelector('.card-container').style.backgroundColor = "#B5B5B4";
+                        //document.querySelector('.icono-temperatura') = "url('../Resource/Icons/Card/Clouds.svg')"
                     }
                     if (ObjJson.weather[0].main == 'Rain'){
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/LluviaWall.png')"
                         document.querySelector('.card-container').style.backgroundColor = "#526196";
+                        //document.querySelector('.icono-temperatura') = "url('../Resource/Icons/Card/Rain Cloud.svg')"
                     }
                     if (ObjJson.weather[0].main == 'Thunderstorm'){
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/TormentaWall.png')"
                         document.querySelector('.card-container').style.backgroundColor = "#182935";
+                        //document.querySelector('.icono-temperatura') = "url('../Resource/Icons/Card/Thunder Cloud.svg')"
                     }
                     if (ObjJson.weather[0].main == 'Snow'){
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/NevadoWall.png')"
                         document.querySelector('.card-container').style.backgroundColor = "#6D9497";
+                        //document.querySelector('.icono-temperatura') = "url('../Resource/Icons/Card/Snow Cloud.svg')"
                     } 
                 }
                 else{
                     document.body.style.backgroundImage = "url('../Resource/WallapaperState/NocheWall.png')"
                     document.querySelector('.card-container').style.backgroundColor = "#000000";
+                    //document.querySelector('.icono-temperatura') = "url('../Resource/Icons/Card/Night Cloud.svg')"
                 }
             })    
     }
