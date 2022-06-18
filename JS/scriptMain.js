@@ -59,6 +59,18 @@ window.onload = () => {
         for (var i = 0; i < Rain.length; i++) {
             Rain[i].style.backgroundColor="#474759";
         }
+
+        Titulo = document.getElementsByClassName('Titulo-Dashboard');
+        for (var i = 0; i < Titulo.length; i++) {
+            Titulo[i].style.color="white";
+        }
+
+        DataApi = document.getElementsByClassName('Data-Content-Dashboard');
+        for (var i = 0; i < DataApi.length; i++) {
+            DataApi[i].style.color="white";
+        }
+
+
     }
     CargarWallpaper()
     
