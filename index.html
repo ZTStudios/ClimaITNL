@@ -1,20 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Clima ITNL</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
-        <script src="JS/scriptMain.js"></script>
-        <link rel="stylesheet" href="/CSS/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <main class="main">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima ITNL</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
+    <script src="JS/scriptMain.js"></script>
+    <script src="JS/scriptDashboard.js"></script>
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,600;0,700;1,400&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <ul class="nav__ul-left-elements">
+                <li>
+                    <img src="Resource/Iconos/Nav/Location.svg" alt="Location">
+                </li>
+                <li>
+                    <label>ITNL</label>
+                </li>
+            </ul>
+            <ul class="nav__ul-right-elements">
+                <li>
+                    <a id="ColorMode">
+                        <img src="Resource/Iconos/Nav/Colormode.svg" alt="Cambiar">
+                    </a>
+                </li>
+                <li>
+                    <a href="#DashboardMain">
+                        <img src="Resource/Iconos/Nav/Stats.svg" alt="Estadisticas">
+                    </a>
+                </li>
+                <li>
+                    <img src="Resource/Iconos/Nav/Exchange.svg" alt="Cambiar">
+                </li>
+            </ul>
+        </nav>
+    </header>
+      <main class="main">
             <div class="card-container">
                 <div class="container-img">
                     <img class="icono-temperatura" src="Resource/Iconos/Card/Clouds.svg" alt="Icon">
@@ -54,5 +82,118 @@
                 </div>
             </div>
         </main>
-    </body>
+    <div id="DashboardMain" class="Dashboard__Container-Main">
+        <div class="Dashboard-Row1">
+            <div class="Sup-Izq-Data">
+                <div class="Dashboard-Container-Medium">
+                    <h3 class="Titulo-Dashboard">Temperatura<br>Interior</h3>
+                    <img class="img-Dashboard" src="Resource/Iconos/Dashboard/Temperature.svg" alt="IconoTemperatura">
+                    <p id="temp_in" class="Data-Content-Dashboard">45℃</p>
+                </div>
+                <div class="Dashboard-Container-Medium">
+                    <h3 class="Titulo-Dashboard">Temperatura<br>Exterior</h3>
+                    <img class="img-Dashboard" src="Resource/Iconos/Dashboard/Temperature.svg" alt="IconoTemperatura">
+                    <p id="temp_out" class="Data-Content-Dashboard">45℃</p>
+                </div>
+            </div>
+            <div class="Center-Graph">
+                <div class="Dashboard-Container-Big"></div>
+            </div>
+            <div class="Sup-Der-Data">
+                <div class="Dashboard-Container-Medium">
+                    <h3 class="Titulo-Dashboard">Humedad<br>Interior</h3>
+                    <img class="img-Dashboard" src="Resource/Iconos/Dashboard/Humidity.svg" alt="IconoTemperatura">
+                    <p id="hum_in" class="Data-Content-Dashboard">45%</p>
+                </div>
+                <div class="Dashboard-Container-Medium">
+                    <h3 class="Titulo-Dashboard">Humedad<br>Exterior</h3>
+                    <img class="img-Dashboard" src="Resource/Iconos/Dashboard/Humidity.svg" alt="IconoTemperatura">
+                    <p id="hum_out" class="Data-Content-Dashboard">45%</p>
+                </div>
+            </div>
+        </div>
+        <div class="Dashboard-Row2">
+            <div class="Dashboard-Container-Medium">
+                <h3 class="Titulo-Dashboard">Velocidad<br>Viento</h3>
+                <img id="Wind-Img" class="img-Dashboard" src="Resource/Iconos/Dashboard/Wind Speed.svg" alt="IconoTemperatura">
+                <p id="vel_wind" class="Data-Content-Dashboard">45mph</p>
+            </div>
+            <div class="Center-Container-Main">
+                <div class="Center-Subcontainer">
+                    <div class="Dashboard-Container-Small">
+                        <h3 class="Titulo-Dashboard">Direccion<br>Viento</h3>
+                        <img class="img-Dashboard" src="Resource/Iconos/Dashboard/Wind-Dir.svg" alt="IconoTemperatura">
+                        <p id="dir_wind" class="Data-Content-Dashboard">45℃</p>
+                    </div>
+                    <div class="Center-Subcontainer-Sub">
+                        <div class="Dashboard-Container-Small">
+                            <h3 class="Titulo-Dashboard">Viento<br>Frio</h3>
+                            <img  class="img-Dashboard" src="Resource/Iconos/Dashboard/Wind-cold.svg" alt="IconoTemperatura">
+                            <p id="cold_wind" class="Data-Content-Dashboard">45℃</p>
+                        </div>
+                        <div class="Dashboard-Container-Small">
+                            <h3 class="Titulo-Dashboard">Indice<br>Calorifico</h3>
+                            <img class="img-Dashboard" src="Resource/Iconos/Dashboard/Index-Heat.svg" alt="IconoTemperatura">
+                            <p id="index_heat" class="Data-Content-Dashboard">45℃</p>
+                        </div>
+                    </div>  
+                    <div class="Dashboard-Container-Small">
+                        <h3 class="Titulo-Dashboard">Indice<br>UV</h3>
+                        <img class="img-Dashboard" src="Resource/Iconos/Dashboard/UV.svg" alt="IconoTemperatura">
+                        <p id="uv" class="Data-Content-Dashboard">45℃</p>
+                    </div>
+                </div>
+            </div>
+            <div class="Dashboard-Container-Medium">
+                <h3 class="Titulo-Dashboard">Radiacion<br>Solar</h3>
+                <img class="img-Dashboard" src="Resource/Iconos/Dashboard/Solar radiation.svg" alt="IconoTemperatura">
+                <p id="rad_sol" class="Data-Content-Dashboard">45℃</p>
+            </div>
+        </div>
+        <div class="Dashboard-Row3">
+            <div class="Dashboard-Container-Rain">
+                <h3 class="Titulo-Dashboard" id="lluviaTitulo">LLUVIA ACTUAL</h3>
+                <div class="Rain-Container">
+                    <div class="RainDay-Container">
+                        <h3 class="Titulo-Dashboard">DIA</h3>
+                        <img class="rain-img" src="Resource/Iconos/Dashboard/Cloud-Rain.svg" alt="IconoTemperatura">
+                        <p id="rain-day" class="Data-Content-Dashboard">45℃</p>
+                    </div>        
+                    <div class="RainDay-Container">
+                        <h3 class="Titulo-Dashboard">TORMENTA</h3>
+                        <img class="rain-img" src="Resource/Iconos/Dashboard/Cloud-Lightning-Rain.svg" alt="IconoTemperatura">
+                        <p id="storm" class="Data-Content-Dashboard">45℃</p>
+                    </div>        
+                </div>
+            </div>
+            <div class="Center-Inf-Main">
+                <div class="Dashboard-Container-Small">
+                    <h3 class="Titulo-Dashboard">PUNTO DE<br>ROCIO</h3>
+                    <img class="img-Dashboard" src="Resource/Iconos/Dashboard/Dew point.svg" alt="IconoTemperatura">
+                    <p id="point-dew" class="Data-Content-Dashboard">45℃</p>
+                </div>
+                <div class="Dashboard-Container-Small">
+                    <h3 class="Titulo-Dashboard">Hora</h3>
+                    <img id="Clock-Img" class="img-Dashboard" src="Resource/Iconos/Dashboard/Clock.svg" alt="IconoTemperatura">
+                    <p id="Clock" class="Data-Content-Dashboard">45℃</p>
+                </div>
+            </div>
+            <div class="Dashboard-Container-Rain">
+                <h3 class="Titulo-Dashboard" id="lluviaTitulo">LLUVIA TOTAL</h3>
+                <div class="Rain-Container">
+                    <div class="RainDay-Container">
+                        <h3 class="Titulo-Dashboard">MES</h3>
+                        <img  src="Resource/Iconos/Dashboard/Calendar-Month.svg" alt="IconoTemperatura">
+                        <p id="rain-month" class="Data-Content-Dashboard">45℃</p>
+                    </div>        
+                    <div class="RainDay-Container">
+                        <h3 class="Titulo-Dashboard">AÑO</h3>
+                        <img src="Resource/Iconos/Dashboard/Calendar-Month.svg" alt="IconoTemperatura">
+                        <p id="rain-year" class="Data-Content-Dashboard">45℃</p>
+                    </div>        
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>

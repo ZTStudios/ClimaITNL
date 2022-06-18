@@ -1,7 +1,10 @@
+
 *{
     box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+}
+
+html{
+    scroll-behavior: smooth;
 }
 
 :root{
@@ -11,6 +14,9 @@
 
 
 body{
+    margin: 0;
+    padding: 0;
+    margin: 0;
     font-family: 'Poppins', sans-serif;
     color: var(--light-mode);
     background-position:center ;
@@ -69,8 +75,6 @@ body{
     border-radius: 48px;
     z-index: 0 ;
 }
-
-
 
 .temperatura{
     font-size: 144px;
@@ -162,6 +166,214 @@ body{
     margin-right: 5%;
 }
 
+.ColorModeON{
+    background-color: #494957;
+}
 
-    /*RESOLUCION JONNHY 1920x1080*/
-    /*RESOLUCION FER 1366x768*/
+.nav{
+    position: absolute;
+    left: 6.2%;
+    right: 6.25%;
+    top: 2.53%;
+    bottom: 90.66%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: #ffffff42;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(32px);
+    border-radius: 52px;
+}
+
+.nav__ul-left-elements{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    align-items: center;
+    color: white;
+    opacity: 100%;
+}
+.nav__ul-right-elements{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding-right: 2%;
+    list-style: none;
+    align-items: center;
+}
+.Container-Full {
+    width: 100%;
+    height: 100vh;
+}
+
+.Dashboard__Container-Main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Dashboard-Row1 {
+    display: flex;
+}
+
+.Dashboard-Row2 {
+    margin-top: 36px;
+    display: flex;
+    gap: 35px;
+}
+
+.Dashboard-Row3 {
+    margin-top: 36px;
+    display: flex;
+    gap: 22px;
+}
+
+.Sup-Izq-Data {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    padding-right: 35px;
+}
+
+.Sup-Der-Data {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    padding-left: 35px;
+}
+
+.Center-Container-Main {
+    display: flex;
+}
+
+.Center-Subcontainer {
+    display: flex;
+    gap: 22px;
+}
+
+.Center-Subcontainer-Sub {
+    display: flex;
+    gap: 19px;
+}
+
+.Center-Inf-Main {
+    display: flex;
+    gap: 22px;
+}
+
+.Dashboard-Container-Medium-Dark{
+    background-color: #494957;
+}
+
+.Dashboard-Container-Medium {
+    width: 347px;
+    height: 200px;
+    border-radius: 25px;
+    box-shadow: 4px 25px 50px 1px rgba(0, 0, 0, 0.25);
+    background-color: white;
+}
+
+.Dashboard-Container-Big {
+    width: 853px;
+    height: 437px;
+    background-color: white;
+    box-shadow: 4px 25px 50px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+}
+
+.Dashboard-Container-Small {
+    width: 198px;
+    height: 200px;
+    background-color: white;
+    box-shadow: 4px 25px 50px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+}
+
+.Dashboard-Container-Rain {
+    width: 590px;
+    height: 200px;
+    background-color: white;
+    box-shadow: 4px 25px 50px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.Dashboard-Container-Medium {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin: 0;
+    text-align: center;
+}
+
+.Dashboard-Container-Small {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin: 0;
+    text-align: center;
+}
+
+.Titulo-Dashboard {
+    margin: 0;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #535353;
+}
+
+.Data-Content-Dashboard {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    margin: 0;
+    color: #535353;
+}
+
+.img-Dashboard {
+    height: 100px;
+    padding: 5px;
+}
+
+#Wind-Img {
+    height: 100px;
+}
+
+#Clock-Img {
+    height: 120px;
+}
+
+.Rain-Container {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#lluviaTitulo {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.rain-img {
+    height: 90px;
+}
+
+.RainDay-Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
