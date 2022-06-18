@@ -35,12 +35,10 @@ body{
     top: 105px;
     border-radius: 48px;
 
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, .1);
     backdrop-filter: blur(32px);
     transition: 0.3s;
     /*opacity: 0.2;*/
-    backdrop-filter: blur(32px);
-    border-radius: 48px;
     z-index: 0 ;
 }
 

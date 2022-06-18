@@ -45,7 +45,6 @@ window.onload = () => {
                 }
                 else{
                     document.body.style.backgroundImage = "url('../Resource/WallapaperState/NocheWall.png')"
-                    document.querySelector('.card-container').style.backgroundColor = "#000000";
                     //document.querySelector('.icono-temperatura') = "url('../Resource/Iconos/Card/Night Cloud.svg')"
                 }
             })    
