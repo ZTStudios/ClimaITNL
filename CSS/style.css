@@ -113,12 +113,12 @@ body{
 }
 
 .humedad{
-    font-weight: 200;
+    font-weight: bold;
     font-size: 1.4rem;
 }
 
 .velocidadviento{
-    font-weight: 200;
+    font-weight: bold;
     font-size: 1.4rem;
 }
 
@@ -126,9 +126,18 @@ body{
     width: 10px;
     height: 10px;
     background-color: #39ff14;
-    margin: 0 5px;
+    margin: 0 1px;
     border-radius: 50%;
-}   
+    display: flex;
+}
+
+.Actualizacion{
+    width: 10px;
+    height: 10px;
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+}
 
     /*RESOLUCION JONNHY 1920x1080*/
     /*RESOLUCION FER 1366x768*/

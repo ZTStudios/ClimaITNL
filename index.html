@@ -17,7 +17,7 @@
         <main class="main">
             <div class="card-container">
                 <div class="card-content">
-                    <img class="icono-temperatura" src="Resource/Icons/Card/Clouds.svg" alt="Icon">
+                    <img class="icono-temperatura" src="Resource/Iconos/Card/Clouds.svg" alt="Icon">
                     <div class="contenedor-temperatura">
                         <h1 class="temperatura">35</h1>
                         <p class="grados">°C</p>
@@ -26,56 +26,26 @@
                         Nublado
                     </p>
                     <p class="ciudad">
-                        Nuevo Laredo, Tamps, Mex.
+                        Nuevo Laredo
                     </p>
                     <div id="current_date" class="fecha">
-                        <script>
-                            date = new Date();
-                            year = date.getFullYear();
-                            month = date.getMonth() + 1;
-                            day = date.getDate();
-                            switch(month){
-                                case 1 : mes = "ENERO";
-                                break;
-                                case 2 : mes = "FEBRERO";
-                                break;
-                                case 3 : mes = "MARZO";
-                                break;
-                                case 4 : mes = "ABRIL";
-                                break;
-                                case 5 : mes = "MAYO";
-                                break;
-                                case 6 : mes = "JUNIO";
-                                break;
-                                case 7 : mes = "JULIO";
-                                break;
-                                case 8 : mes = "AGOSTO";
-                                break;
-                                case 9 : mes = "SEPTIEMBRE";
-                                break;
-                                case 10 : mes = "OCTUBRE";
-                                break;
-                                case 11 : mes = "NOVIEMBRE";
-                                break;
-                                case 12 : mes = "DICIEMBRE";
-                                break;
-                            }
-                            document.getElementById("current_date").innerHTML = day + " DE " + mes + " DEL " + year;
-                            </script>
+                        <!--Fecha--> 
+                        <!--<scriptFecha class="js"></scriptFecha>--> 
                     </div>
                     <div class="row">
-                        <img class="icono-humedad" src="Resource/Icons/Card/Card-Humidity.svg" alt="IconHumedad">
+                        <img class="icono-humedad" src="Resource/Iconos/Card/Card-Humidity.svg" alt="IconHumedad">
                         <span class="humedad">
                             50%
                         </span>  <!--Humedad-->
-                        <img class="icono-viento" src="Resource/Icons/Card/Card-Wind.svg" alt="IconViento">
-                        <span class="velocidadViento">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img class="icono-viento" src="Resource/Iconos/Card/Card-Wind.svg" alt="IconViento">
+                        <span class="velocidadviento">
                            5 mph
                         </span>  <!--Velocidad viento-->
                     </div>                   
                     <!--DIV UPDATING-->
                     <div class="card-update">
-                        <span class="dot"></span><p>Actualizando</p><span class="dot"></span>
+                        <span class="dot"></span>&nbsp;<p class="actualizacion">Actualizando</p>&nbsp;<span class="dot"></span>
                     </div>
                 </div>
             </div>
