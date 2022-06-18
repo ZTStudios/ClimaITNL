@@ -387,4 +387,13 @@ body{
     align-items: center;
 }
 
+.darkMode{
+    background-color: #474759;
+    
+}
+
+.darkModeText{
+    color: white;
+}
+
 /* ===========================> STYLES DASHBOARD */

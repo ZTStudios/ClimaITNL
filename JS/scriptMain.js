@@ -45,44 +45,36 @@ window.onload = () => {
                 }
                 else{
                     document.body.style.backgroundImage = "url('../Resource/WallapaperState/NocheWall.png')"
-                    ModoOscuroON()
+                    modoOcuroON()
                 }
             })    
 
     }
 
-    function ModoOscuroON() {
-        Medium = document.getElementsByClassName('Dashboard-Container-Medium');
-        for (var i = 0; i < Medium.length; i++) {
-            Medium[i].style.backgroundColor="#474759";
-        }
-      
-        document.querySelector('.Dashboard-Container-Big').style.backgroundColor = '#474759'
-
-        Small = document.getElementsByClassName('Dashboard-Container-Small');
-        for (var i = 0; i < Medium.length; i++) {
-            Small[i].style.backgroundColor="#474759";
-        }
-
-        Rain = document.getElementsByClassName('Dashboard-Container-Rain');
-        for (var i = 0; i < Rain.length; i++) {
-            Rain[i].style.backgroundColor="#474759";
-        }
-
-        Titulo = document.getElementsByClassName('Titulo-Dashboard');
-        for (var i = 0; i < Titulo.length; i++) {
-            Titulo[i].style.color="white";
-        }
-
-        DataApi = document.getElementsByClassName('Data-Content-Dashboard');
-        for (var i = 0; i < DataApi.length; i++) {
-            DataApi[i].style.color="white";
-        }
-
-
-    }
     CargarWallpaper()
     
+    
+    
+    function modoOcuroON(){
+        const mode = document.querySelectorAll(".mode")
+        const title = document.querySelectorAll(".Titulo-Dashboard")
+        const dataApi = document.querySelectorAll(".Data-Content-Dashboard")
+
+        
+        mode.forEach((e)=>{
+            e.classList.toggle("darkMode");
+        })
+        title.forEach((e)=>{
+            e.classList.toggle("darkModeText");
+        })
+        dataApi.forEach((e)=>{
+            e.classList.toggle("darkModeText");
+        })
+    }
+
+    document.querySelector("#ColorMode").addEventListener("click", function() {
+        modoOcuroON()
+        });
 }   
     
     
