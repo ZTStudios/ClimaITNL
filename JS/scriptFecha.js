@@ -1,10 +1,8 @@
-window.onload = () => {
-
     function Fecha(){
-        date = new Date();
-        year = date.getFullYear();
-        month = date.getMonth() + 1;
-        day = date.getDate();
+        FechaActual = new Date();
+        year = FechaActual.getFullYear();
+        month = FechaActual.getMonth() + 1;
+        day = FechaActual.getUTCDate();
         switch(month){
             case 1 : mes = "ENERO";
             break;
@@ -32,7 +30,9 @@ window.onload = () => {
             break;
             }
             y = day + " DE " + mes + " DEL " + year;
-            document.getElementById("current_date").innerHTML = day + " DE " + mes + " DEL " + year;
+            console.log(y)
+            console.log()
+            document.querySelector('#current_date').innerHTML = y;
         }
-    Fecha();
-}
+
+        Fecha();
