@@ -75,7 +75,7 @@ window.onload = () => {
         });
 
         
-        const firebaseConfig = {
+    const firebaseConfig = {
 
     apiKey: "AIzaSyDXQ-UQI3N9Kyf0ShpZu2f1TSI9sWazMok",
     authDomain: "climaitnl.firebaseapp.com",
@@ -163,12 +163,12 @@ window.onload = () => {
             save(ruta)
             
         }
-        else if(minutos % 5){
+        else if(minutos % 5  == 0 && segundos == 0){
             let ruta = "currentData"
             save(ruta)
         }
         else{
-            readCurrentData()
+            readCurrentData();
         }
         
     }
