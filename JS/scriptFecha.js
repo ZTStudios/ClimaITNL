@@ -31,7 +31,6 @@
             }
             y = day + " DE " + mes + " DEL " + year;
             console.log(y)
-            console.log()
             document.querySelector('#current_date').innerHTML = y;
         }
 
