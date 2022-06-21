@@ -13,31 +13,31 @@ window.onload = () => {
             .then(res => res.json())
             .then(data => {
                 ObjJson = data;
-                console.log(ObjJson);
+                //console.log(ObjJson);
 
                 if(HoraActual.getHours() >= 8  && HoraActual.getHours() < 20) {
 
-                    if (ObjJson.weather[0].main == 'Clear') {
+                    if (ObjJson.weather[0].main == 'Clear' || ObjJson.weather[0].description == 'nubes dispersas') {
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/SoleadoWall.png')"
                         document.querySelector('.card-container').style.backgroundColor = "#ffb7002d";
                         document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Sun Cloud.svg'
                     }
-                    if (ObjJson.weather[0].main == 'Clouds') {
+                    else if (ObjJson.weather[0].main == 'Clouds') {
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/NubladoWall.png')"
                         document.querySelector('.card-container').style.backgroundColor = "#B5B5B4";
                         document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Clouds.svg'
                     }
-                    if (ObjJson.weather[0].main == 'Rain'){
+                    else if (ObjJson.weather[0].main == 'Rain'){
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/LluviaWall.png')"
                         document.querySelector('.card-container').style.backgroundColor = "#526196";
                         document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Rain Cloud.svg'
                     }
-                    if (ObjJson.weather[0].main == 'Thunderstorm'){
+                    else if (ObjJson.weather[0].main == 'Thunderstorm'){
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/TormentaWall.png')"
                         document.querySelector('.card-container').style.backgroundColor = "#182935";
                         document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Thunder Cloud.svg'
                     }
-                    if (ObjJson.weather[0].main == 'Snow'){
+                    else if (ObjJson.weather[0].main == 'Snow'){
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/NevadoWall.png')"
                         document.querySelector('.card-container').style.backgroundColor = "#6D9497";
                         document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Snow Cloud.svg'
@@ -141,13 +141,35 @@ window.onload = () => {
         var ref = firebase.database().ref('ClimaITNL')
     
         ref.limitToFirst(1).on('value' , (snapshot) => {
-          // console.log(snapshot.val())
+          //console.log(snapshot.val())
     
-          let DataList = snapshot.val();
-    
-          for (let i in DataList) {
-            console.log(DataList[i].obj)
-          }
+            let DataList = snapshot.val();
+            for (let i in DataList) {
+                // console.log(DataList[i].obj)
+                let TemperaturaRedondeada = Math.trunc(DataList[i].obj.temp_out);
+                document.querySelector('#temperaturaClimaApi').innerHTML = TemperaturaRedondeada;
+                document.querySelector('#temperaturaTipoClimaApi').innerHTML = '°F';
+                document.querySelector('#humedadClimaApi').innerHTML = DataList[i].obj.hum_out + '%';
+                document.querySelector('#velClimaApi').innerHTML = DataList[i].obj.wind_speed + 'mph';
+                document.querySelector('#temp_in').innerHTML = DataList[i].obj.temp_in + '℉'
+                document.querySelector('#temp_out').innerHTML = DataList[i].obj.temp_out + '℉'
+                document.querySelector('#hum_in').innerHTML = DataList[i].obj.hum_in + '%'
+                document.querySelector('#hum_out').innerHTML = DataList[i].obj.hum_out + '%'
+                document.querySelector('#vel_wind').innerHTML = DataList[i].obj.wind_speed + 'mph'
+                document.querySelector('#dir_wind').innerHTML = DataList[i].obj.wind_dir
+                document.querySelector('#cold_wind').innerHTML = DataList[i].obj.wind_chill + '℉'
+                document.querySelector('#index_heat').innerHTML = DataList[i].obj.heat_index + '℉'
+                document.querySelector('#uv').innerHTML = DataList[i].obj.uv
+                document.querySelector('#rad_sol').innerHTML = DataList[i].obj.solar_rad + ' w/m²'
+                document.querySelector('#rain-day').innerHTML = DataList[i].obj.rain_day_mm + ' mm'
+                document.querySelector('#storm').innerHTML = DataList[i].obj.rain_storm_mm + ' mm'
+                document.querySelector('#point-dew').innerHTML = DataList[i].obj.dew_point + ' ℉'
+                let HoraActual = new Date();
+                document.querySelector('#Clock').innerHTML = HoraActual.getHours() + ':' + HoraActual.getMinutes();
+                document.querySelector('#rain-month').innerHTML = DataList[i].obj.rain_month_mm + ' mm'
+                document.querySelector('#rain-year').innerHTML = DataList[i].obj.rain_year_mm + ' mm'
+              }
+
     
         })
     
@@ -160,7 +182,7 @@ window.onload = () => {
             console.log('Extrayendo Datos')
             ActualizarDatos();
             CargarWallpaper();
-            GenerarLink();
+            //GenerarLink();
         }
         Timestamp++;
 
