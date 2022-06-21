@@ -1,3 +1,82 @@
+const firebaseConfig = {
+
+apiKey: "AIzaSyDXQ-UQI3N9Kyf0ShpZu2f1TSI9sWazMok",
+authDomain: "climaitnl.firebaseapp.com",
+databaseURL: "https://climaitnl-default-rtdb.firebaseio.com/",
+projectId: "climaitnl",
+storageBucket: "climaitnl.appspot.com",
+messagingSenderId: "639144950052",
+appId: "1:639144950052:web:d461d9875d84bda94f1bb1",
+measurementId: "G-41P9KTDXDQ"
+
+};
+
+
+firebase.initializeApp(firebaseConfig);
+var Database = firebase.database().ref('ClimaITNL')
+
+const save = (ruta) => {
+    if (ruta == "formato"){
+        const meses = ["-01-", "-02-", "-03-", "-04-", "-05-", "-06-","-07-", "-08-", "-09-", "-10-", "-11-", "-12-"
+    ];
+
+    const fecha = new Date();
+    const dia = fecha.getDate() + "-";
+    const mes = meses[fecha.getMonth()]
+    const año = fecha.getFullYear();
+    const hora = fecha.getHours()
+
+    let fechaActual = año + mes + dia + hora
+    var newObjeto = Database.child(fechaActual);
+    fetch('/pruebaHora.json')
+        .then((response) => {
+            return response.json();
+        })
+        .then((object) => {
+            let Objeto = object;
+
+            newObjeto.set({
+            obj:Objeto.Datos[0],
+            });
+        })
+
+    }else{
+
+        var newObjeto = Database.child("0-CurrentData");
+        fetch('/pruebaMinutos.json')
+        .then((response) => {
+            return response.json();
+        })
+
+        .then((object) => {
+            let Objeto = object;
+
+            newObjeto.set({
+            obj:Objeto.Datos[0],
+            });
+        })
+    }
+}
+
+const readCurrentData = () => {
+
+    var ref = firebase.database().ref('ClimaITNL')
+
+    ref.limitToFirst(1).on('value' , (snapshot) => {
+      // console.log(snapshot.val())
+
+      let DataList = snapshot.val();
+
+      for (let i in DataList) {
+        console.log(DataList[i].obj)
+      }
+
+    })
+
+
+  }
+
+
 window.onload = () => {
     
     console.log('Archivo Cargado')
@@ -53,6 +132,27 @@ window.onload = () => {
 
     CargarWallpaper()
     
+    const ActualizarDatos = () =>{
+        let hoy = new Date();
+        let minutos = hoy.getMinutes()
+        let segundos = hoy.getSeconds();
+        
+    }
+        if(minutos == 0){
+            let ruta = "formato" 
+            save(ruta)
+
+        }
+        else if(minutos % 5){
+            let ruta = "currentData"
+            save(ruta)
+        }
+        else{
+            readCurrentData()
+        }
+    
+        ActualizarDatos()
+
     
     
     function modoOcuroON(){
@@ -75,7 +175,7 @@ window.onload = () => {
     document.querySelector("#ColorMode").addEventListener("click", function() {
         modoOcuroON()
         });
-}   
-    
-    
+}    
+
+
     
