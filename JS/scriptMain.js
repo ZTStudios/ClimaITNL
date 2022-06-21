@@ -53,29 +53,6 @@ window.onload = () => {
 
     CargarWallpaper()
     
-    const ActualizarDatos = () =>{
-        let hoy = new Date();
-        let minutos = hoy.getMinutes()
-        let segundos = hoy.getSeconds();
-        
-    }
-        if(minutos == 0){
-            let ruta = "formato" 
-            save(ruta)
-
-        }
-        else if(minutos % 5){
-            let ruta = "currentData"
-            save(ruta)
-        }
-        else{
-            readCurrentData()
-        }
-    
-        ActualizarDatos()
-
-    
-    
     function modoOcuroON(){
         const mode = document.querySelectorAll(".mode")
         const title = document.querySelectorAll(".Titulo-Dashboard")
@@ -96,9 +73,9 @@ window.onload = () => {
     document.querySelector("#ColorMode").addEventListener("click", function() {
         modoOcuroON()
         });
-}    
 
-const firebaseConfig = {
+        
+        const firebaseConfig = {
 
     apiKey: "AIzaSyDXQ-UQI3N9Kyf0ShpZu2f1TSI9sWazMok",
     authDomain: "climaitnl.firebaseapp.com",
@@ -128,7 +105,7 @@ const firebaseConfig = {
     
         let fechaActual = año + mes + dia + hora
         var newObjeto = Database.child(fechaActual);
-        fetch('/pruebaHora.json')
+        fetch('/Resource/pruebaHora.json')
             .then((response) => {
                 return response.json();
             })
@@ -143,7 +120,7 @@ const firebaseConfig = {
         }else{
     
             var newObjeto = Database.child("0-CurrentData");
-            fetch('/pruebaMinutos.json')
+            fetch('/Resource/pruebaMinutos.json')
             .then((response) => {
                 return response.json();
             })
@@ -173,7 +150,30 @@ const firebaseConfig = {
     
         })
     
-    
-      }
+    }
 
-    
+
+    const ActualizarDatos = () =>{
+        let hoy = new Date();
+        let minutos = hoy.getMinutes()
+        let segundos = hoy.getSeconds();
+        
+        if(minutos == 0){
+            let ruta = "formato" 
+            save(ruta)
+            
+        }
+        else if(minutos % 5){
+            let ruta = "currentData"
+            save(ruta)
+        }
+        else{
+            readCurrentData()
+        }
+        
+    }
+
+    ActualizarDatos();
+      
+      
+}    
