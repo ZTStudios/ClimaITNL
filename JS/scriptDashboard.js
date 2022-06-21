@@ -40,6 +40,11 @@
         })
         .then((object) => {
             let Datos = object.sensors[0].data[0]
+            let TemperaturaRedondeada = Math.trunc(Datos.temp_out);
+            document.querySelector('#temperaturaClimaApi').innerHTML = TemperaturaRedondeada;
+            document.querySelector('#temperaturaTipoClimaApi').innerHTML = '°F';
+            document.querySelector('#humedadClimaApi').innerHTML = Datos.hum_out + '%';
+            document.querySelector('#velClimaApi').innerHTML = Datos.wind_speed + 'mph';
             document.querySelector('#temp_in').innerHTML = Datos.temp_in + '℉'
             document.querySelector('#temp_out').innerHTML = Datos.temp_out + '℉'
             document.querySelector('#hum_in').innerHTML = Datos.hum_in + '%'

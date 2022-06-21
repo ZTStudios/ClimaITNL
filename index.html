@@ -18,11 +18,9 @@
     <header>
         <nav class="nav">
             <ul class="nav__ul-left-elements">
-                <li>
+                <li class="li-ITNL">
                     <img src="Resource/Iconos/Nav/Location.svg" alt="Location">
-                </li>
-                <li>
-                    <label>ITNL</label>
+                    <label class="lbl-ITNL">ITNL</label>
                 </li>
             </ul>
             <ul class="nav__ul-right-elements">
@@ -45,15 +43,15 @@
       <main class="main">
             <div class="card-container">
                 <div class="container-img">
-                    <img class="icono-temperatura" src="Resource/Iconos/Card/Clouds.svg" alt="Icon">
+                    <img id="icon-Card" class="icono-temperatura" src="Resource/Iconos/Card/Clouds.svg" alt="Icon">
                 </div>
                 <div class="card-content">
                     <div class="contenedor-temperatura">
-                        <h1 class="temperatura">35</h1>
-                        <p class="grados">°C</p>
+                        <h1 id="temperaturaClimaApi" class="temperatura">35</h1>
+                        <p id="temperaturaTipoClimaApi" class="grados">°C</p>
                     </div>
                     <div class="informacion-Container">
-                        <p class="condicion">
+                        <p id="condicionClimaApi" class="condicion">
                             Nublado
                         </p>
                         <p class="ciudad">
@@ -66,12 +64,12 @@
                     </div>
                     <div class="row">
                         <img class="icono-humedad" src="Resource/Iconos/Card/Card-Humidity.svg" alt="IconHumedad">
-                        <span class="humedad">
+                        <span id="humedadClimaApi" class="humedad">
                             50%
                         </span>  <!--Humedad-->
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <img class="icono-viento" src="Resource/Iconos/Card/Card-Wind.svg" alt="IconViento">
-                        <span class="velocidadviento">
+                        <span id="velClimaApi" class="velocidadviento">
                            5 mph
                         </span>  <!--Velocidad viento-->
                     </div>                   

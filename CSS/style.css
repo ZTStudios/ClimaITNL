@@ -40,6 +40,17 @@ body{
     border-radius: 52px;
 }
 
+.li-ITNL {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lbl-ITNL {
+    font-weight: 600;
+    font-size: 18px;
+}
+
 .nav__ul-left-elements{
     display: flex;
     flex-direction: row;
