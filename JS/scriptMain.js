@@ -152,6 +152,18 @@ window.onload = () => {
     
     }
 
+    setInterval(function () {
+
+        let Timestamp = Math.floor(Date.now() / 1000)
+        if(Timestamp % 300  == 0) {
+            console.log('Extrayendo Datos')
+            ActualizarDatos();
+            CargarWallpaper();
+            GenerarLink();
+        }
+        Timestamp++;
+
+    } ,1000);
 
     const ActualizarDatos = () =>{
         let hoy = new Date();
