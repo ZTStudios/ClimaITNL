@@ -218,6 +218,13 @@ body{
     margin: 0;
 }
 
+#ColorMode:hover{
+    cursor: pointer;
+}
+#CambiarGrados:hover{
+    cursor: pointer;
+}
+
 .ColorModeON{
     background-color: #494957;
 }
