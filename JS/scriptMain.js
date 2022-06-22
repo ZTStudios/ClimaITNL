@@ -80,7 +80,12 @@ window.onload = () => {
     document.querySelector("#ColorMode").addEventListener("click", function() {
         modoOcuroON()
         });
+        
+    let seleccionarGrados = document.querySelector("#CambiarGrados");
 
+    seleccionarGrados.addEventListener("click",function(){
+        cambiarGrados()
+    })
         
     const firebaseConfig = {
 
@@ -156,7 +161,7 @@ window.onload = () => {
         }
     }
     
-    const readCurrentData = () => {
+    const readCurrentData = (rutaGrados) => {
     
         var ref = firebase.database().ref('ClimaITNL')
     
@@ -167,7 +172,7 @@ window.onload = () => {
           for (let i in DataList) {
               // console.log(DataList[i].obj)
               let TemperaturaRedondeada = Math.trunc(DataList[i].obj.temp_out);
-              let temperaturaCentigrados = TemperaturaRedondeada
+              let temperaturaGrados = TemperaturaRedondeada
               let velocidadClima = DataList[i].obj.hum_out
               let temperaturaInterna = DataList[i].obj.temp_in
               let temperaturaExterna = DataList[i].obj.temp_out
@@ -176,27 +181,53 @@ window.onload = () => {
               let indexHeat = DataList[i].obj.heat_index
               let pointDew = DataList[i].obj.dew_point
 
-              document.querySelector('#temperaturaClimaApi').innerHTML = ConvertirCentigrados(temperaturaCentigrados);
-              document.querySelector('#temperaturaTipoClimaApi').innerHTML = '°C';
-              document.querySelector('#humedadClimaApi').innerHTML = DataList[i].obj.hum_out + '%';
-              document.querySelector('#velClimaApi').innerHTML = ConvertirKilometros(velocidadClima) + ' km';
-              document.querySelector('#temp_in').innerHTML = ConvertirCentigradosDecimal(temperaturaInterna) + ' °C'
-              document.querySelector('#temp_out').innerHTML = ConvertirCentigradosDecimal(temperaturaExterna) + ' °C'
-              document.querySelector('#hum_in').innerHTML = DataList[i].obj.hum_in + '%'
-              document.querySelector('#hum_out').innerHTML = DataList[i].obj.hum_out + '%'
-              document.querySelector('#vel_wind').innerHTML = ConvertirKilometros(velocidadViento) + ' km'
-              document.querySelector('#dir_wind').innerHTML = DataList[i].obj.wind_dir
-              document.querySelector('#cold_wind').innerHTML = ConvertirCentigradosDecimal(coldWind) + ' °C'
-              document.querySelector('#index_heat').innerHTML = ConvertirCentigradosDecimal(indexHeat) + ' °C'
-              document.querySelector('#uv').innerHTML = DataList[i].obj.uv
-              document.querySelector('#rad_sol').innerHTML = DataList[i].obj.solar_rad + ' w/m²'
-              document.querySelector('#rain-day').innerHTML = DataList[i].obj.rain_day_mm + ' mm'
-              document.querySelector('#storm').innerHTML = DataList[i].obj.rain_storm_mm + ' mm'
-              document.querySelector('#point-dew').innerHTML = ConvertirCentigradosDecimal(pointDew) + '  °C'
-              let HoraActual = new Date();
-              document.querySelector('#Clock').innerHTML = HoraActual.getHours() + ':' + HoraActual.getMinutes();
-              document.querySelector('#rain-month').innerHTML = DataList[i].obj.rain_month_mm + ' mm'
-              document.querySelector('#rain-year').innerHTML = DataList[i].obj.rain_year_mm + ' mm'
+              if (rutaGrados === "centigrados"){
+                  document.querySelector('#temperaturaClimaApi').innerHTML = ConvertirCentigrados(temperaturaGrados);
+                  document.querySelector('#temperaturaTipoClimaApi').innerHTML = '°C';
+                  document.querySelector('#humedadClimaApi').innerHTML = DataList[i].obj.hum_out + '%';
+                  document.querySelector('#velClimaApi').innerHTML = ConvertirKilometros(velocidadClima) + ' km';
+                  document.querySelector('#temp_in').innerHTML = RedondearDecimales(temperaturaInterna) + ' °C'
+                  document.querySelector('#temp_out').innerHTML = RedondearDecimales(temperaturaExterna) + ' °C'
+                  document.querySelector('#hum_in').innerHTML = DataList[i].obj.hum_in + '%'
+                  document.querySelector('#hum_out').innerHTML = DataList[i].obj.hum_out + '%'
+                  document.querySelector('#vel_wind').innerHTML = ConvertirKilometros(velocidadViento) + ' km'
+                  document.querySelector('#dir_wind').innerHTML = DataList[i].obj.wind_dir + ' km/h'
+                  document.querySelector('#cold_wind').innerHTML = RedondearDecimales(coldWind) + ' °C'
+                  document.querySelector('#index_heat').innerHTML = RedondearDecimales(indexHeat) + ' °C'
+                  document.querySelector('#uv').innerHTML = DataList[i].obj.uv
+                  document.querySelector('#rad_sol').innerHTML = DataList[i].obj.solar_rad + ' w/m²'
+                  document.querySelector('#rain-day').innerHTML = DataList[i].obj.rain_day_mm + ' mm'
+                  document.querySelector('#storm').innerHTML = DataList[i].obj.rain_storm_mm + ' mm'
+                  document.querySelector('#point-dew').innerHTML = RedondearDecimales(pointDew) + '  °C'
+                  let HoraActual = new Date();
+                  document.querySelector('#Clock').innerHTML = HoraActual.getHours() + ':' + HoraActual.getMinutes();
+                  document.querySelector('#rain-month').innerHTML = DataList[i].obj.rain_month_mm + ' mm'
+                  document.querySelector('#rain-year').innerHTML = DataList[i].obj.rain_year_mm + ' mm'
+              }
+              else{
+                document.querySelector('#temperaturaClimaApi').innerHTML = temperaturaGrados;
+                document.querySelector('#temperaturaTipoClimaApi').innerHTML = '°F';
+                document.querySelector('#humedadClimaApi').innerHTML = DataList[i].obj.hum_out + '%';
+                document.querySelector('#velClimaApi').innerHTML = velocidadClima + ' mph';
+                document.querySelector('#temp_in').innerHTML = RedondearFarenheits(temperaturaInterna) + ' °F'
+                document.querySelector('#temp_out').innerHTML = RedondearFarenheits(temperaturaExterna) + ' °F'
+                document.querySelector('#hum_in').innerHTML = DataList[i].obj.hum_in + '%'
+                document.querySelector('#hum_out').innerHTML = DataList[i].obj.hum_out + '%'
+                document.querySelector('#vel_wind').innerHTML = velocidadViento + ' mph'
+                document.querySelector('#dir_wind').innerHTML = DataList[i].obj.wind_dir + ' mph'
+                document.querySelector('#cold_wind').innerHTML = coldWind + ' °F'
+                document.querySelector('#index_heat').innerHTML = indexHeat + ' °F'
+                document.querySelector('#uv').innerHTML = DataList[i].obj.uv
+                document.querySelector('#rad_sol').innerHTML = DataList[i].obj.solar_rad + ' w/m²'
+                document.querySelector('#rain-day').innerHTML = DataList[i].obj.rain_day_mm + ' mm'
+                document.querySelector('#storm').innerHTML = DataList[i].obj.rain_storm_mm + ' mm'
+                document.querySelector('#point-dew').innerHTML = pointDew + '  °F'
+                let HoraActual = new Date();
+                document.querySelector('#Clock').innerHTML = HoraActual.getHours() + ':' + HoraActual.getMinutes();
+                document.querySelector('#rain-month').innerHTML = DataList[i].obj.rain_month_mm + ' mm'
+                document.querySelector('#rain-year').innerHTML = DataList[i].obj.rain_year_mm + ' mm'
+              }
+
           }
     
         })
@@ -242,7 +273,7 @@ window.onload = () => {
         dato = (dato -32) * 5 / 9
         return (Math.trunc(dato))
     }  
-    function ConvertirCentigradosDecimal(dato) {
+    function RedondearDecimales(dato) {
         dato = (dato -32) * 5 / 9
         return (dato.toFixed(2))
     }  
@@ -251,4 +282,32 @@ window.onload = () => {
         dato = dato * 1.609
         return (dato.toFixed(2))
     } 
+
+    function RedondearFarenheits(dato){
+        return (dato.toFixed(2))
+    }
+
+    function cambiarGrados(){
+        seleccionarGrados.classList.toggle("centigrados")
+        if (seleccionarGrados.classList.contains("centigrados")){
+
+            let rutaGrados = "centigrados"
+            readCurrentData(rutaGrados)
+        }
+        else{
+            
+            let rutaGrados = "farenheit"
+            readCurrentData(rutaGrados)
+        }
+        
+    }
+
+    const verificarCentigrados = () =>{
+        if (seleccionarGrados.classList.contains("centigrados")){
+            let rutaGrados = "centigrados"
+            readCurrentData(rutaGrados)
+        }
+    }
+
+    verificarCentigrados()
 }    
