@@ -166,11 +166,11 @@ window.onload = () => {
         var ref = firebase.database().ref('ClimaITNL')
     
         ref.limitToFirst(1).on('value' , (snapshot) => {
-          //console.log(snapshot.val())
+        //   console.log(snapshot.val())
     
           let DataList = snapshot.val();
           for (let i in DataList) {
-              // console.log(DataList[i].obj)
+            //   console.log(DataList[i].obj)
               let TemperaturaRedondeada = Math.trunc(DataList[i].obj.temp_out);
               let temperaturaGrados = TemperaturaRedondeada
               let velocidadClima = DataList[i].obj.hum_out
@@ -238,10 +238,22 @@ window.onload = () => {
 
         let Timestamp = Math.floor(Date.now() / 1000)
         if(Timestamp % 300  == 0) {
+            document.querySelector('.actualizacion').innerHTML = "Actualizando"
+            const dot = document.querySelectorAll('.dot')
+            dot.forEach((e)=>{
+                e.style.backgroundColor = 'orange';
+            })
             console.log('Extrayendo Datos')
-            ActualizarDatos();
-            CargarWallpaper();
-            //GenerarLink();
+            setTimeout(function(){
+                console.log("Hola Mundo");
+                document.querySelector('.actualizacion').innerHTML = "Actualizado"
+                dot.forEach((e)=>{
+                    e.style.backgroundColor = '#39ff14';
+                })
+                ActualizarDatos();
+                CargarWallpaper();
+                //GenerarLink();
+            }, 3000);
         }
         Timestamp++;
 
@@ -257,7 +269,7 @@ window.onload = () => {
             save(ruta)
             
         }
-        else if(minutos % 5  == 0 && segundos == 0){
+        else if(minutos % 5  == 0 && segundos < 5){
             let ruta = "currentData"
             save(ruta)
         }
