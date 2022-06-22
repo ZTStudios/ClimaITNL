@@ -13,7 +13,7 @@ window.onload = () => {
             .then(res => res.json())
             .then(data => {
                 ObjJson = data;
-                //console.log(ObjJson);
+                // console.log(ObjJson);
 
                 if(HoraActual.getHours() >= 8  && HoraActual.getHours() < 20) {
 
@@ -21,31 +21,37 @@ window.onload = () => {
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/SoleadoWall.png')"
                         document.querySelector('.card-container').style.backgroundColor = "#ffb7002d";
                         document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Sun Cloud.svg'
+                        document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
                     }
                     else if (ObjJson.weather[0].main == 'Clouds') {
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/NubladoWall.png')"
                         document.querySelector('.card-container').style.backgroundColor = "#B5B5B4";
                         document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Clouds.svg'
+                        document.querySelector('#condicionClimaApi').innerHTML = 'NUBLADO'
                     }
                     else if (ObjJson.weather[0].main == 'Rain'){
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/LluviaWall.png')"
                         document.querySelector('.card-container').style.backgroundColor = "#526196";
                         document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Rain Cloud.svg'
+                        document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
                     }
                     else if (ObjJson.weather[0].main == 'Thunderstorm'){
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/TormentaWall.png')"
                         document.querySelector('.card-container').style.backgroundColor = "#182935";
                         document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Thunder Cloud.svg'
+                        document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
                     }
                     else if (ObjJson.weather[0].main == 'Snow'){
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/NevadoWall.png')"
                         document.querySelector('.card-container').style.backgroundColor = "#6D9497";
                         document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Snow Cloud.svg'
+                        document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
                     } 
                 }
                 else{
                     document.body.style.backgroundImage = "url('../Resource/WallapaperState/NocheWall.png')"
                     document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Night Cloud.svg'
+                    document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
                     modoOcuroON()
                 }
             })    
@@ -117,6 +123,20 @@ window.onload = () => {
                 obj:Objeto.Datos[0],
                 });
             })
+
+        var newObjeto = Database.child("0-CurrentData");
+        fetch('/Resource/pruebaMinutos.json')
+        .then((response) => {
+            return response.json();
+        })
+
+        .then((object) => {
+            let Objeto = object;
+
+            newObjeto.set({
+            obj:Objeto.Datos[0],
+            });
+        })
     
         }else{
     
@@ -169,7 +189,6 @@ window.onload = () => {
                 document.querySelector('#rain-month').innerHTML = DataList[i].obj.rain_month_mm + ' mm'
                 document.querySelector('#rain-year').innerHTML = DataList[i].obj.rain_year_mm + ' mm'
               }
-
     
         })
     
@@ -208,7 +227,5 @@ window.onload = () => {
         
     }
 
-    ActualizarDatos();
-      
-      
+    ActualizarDatos();      
 }    
