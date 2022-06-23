@@ -327,4 +327,15 @@ window.onload = () => {
     }
 
     verificarCentigrados()
+
+    setTimeout(()=>{
+        document.querySelector("#Splash").classList.toggle("fade")
+        document.querySelector("body").classList.toggle("enableScroll")
+        document.querySelector("#Splash").classList.toggle("fadeDiv")
+    },2000)
+
+
+
+    console.log(GenerarLink())
+    
 }    
