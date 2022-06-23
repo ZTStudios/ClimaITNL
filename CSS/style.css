@@ -101,8 +101,8 @@ body{
     z-index: 0 ;
 }
 
-/* .card-animacion{
-    animation: fadeInAnimation ease 4s;
+.card-animacion{
+    animation: fadeInAnimation ease 3s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -114,7 +114,7 @@ body{
     100%{
         opacity: 1;
     }
-} */
+}
 
 .card-content{
     height: 100%;

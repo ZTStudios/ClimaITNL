@@ -14,7 +14,7 @@ window.onload = () => {
             .then(data => {
                 ObjJson = data;
                 // console.log(ObjJson);
-
+                document.body.classList.add('card-animacion')
                 if(HoraActual.getHours() >= 8  && HoraActual.getHours() < 20) {
 
                     if (ObjJson.weather[0].main == 'Clear' || ObjJson.weather[0].description == 'nubes dispersas') {
@@ -52,13 +52,14 @@ window.onload = () => {
                     document.body.style.backgroundImage = "url('../Resource/WallapaperState/NocheWall.png')"
                     document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Night Cloud.svg'
                     document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
+                    document.body.classList.add('card-animacion')
                     modoOcuroON()
                 }
             })    
 
     }
 
-    CargarWallpaper()
+    // CargarWallpaper()
     
     function modoOcuroON(){
         const mode = document.querySelectorAll(".mode")
@@ -129,7 +130,7 @@ window.onload = () => {
                 });
             })
 
-        var newObjeto = Database.child("0-CurrentData");
+        var newObjeto2 = Database.child("0-CurrentData");
         fetch('/Resource/pruebaMinutos.json')
         .then((response) => {
             return response.json();
@@ -138,12 +139,12 @@ window.onload = () => {
         .then((object) => {
             let Objeto = object;
 
-            newObjeto.set({
+            newObjeto2.set({
             obj:Objeto.Datos[0],
             });
         })
     
-        }else{
+        }else if (ruta == "currentData"){
     
             var newObjeto = Database.child("0-CurrentData");
             fetch('/Resource/pruebaMinutos.json')
@@ -239,6 +240,7 @@ window.onload = () => {
         let Timestamp = Math.floor(Date.now() / 1000)
         if(Timestamp % 300  == 0) {
 
+            document.body.classList.remove('card-animacion')
             document.querySelector('.actualizacion').innerHTML = "Actualizando"
 
             const dot = document.querySelectorAll('.dot')
@@ -250,15 +252,18 @@ window.onload = () => {
             console.log('Extrayendo Datos')
 
             setTimeout(function(){
-                console.log("Hola Mundo");
+                // console.log("Hola Mundo");
                 document.querySelector('.actualizacion').innerHTML = "Actualizado"
                 dot.forEach((e)=>{
                     e.style.backgroundColor = '#39ff14';
                 })
-                ActualizarDatos();
-                CargarWallpaper();
+
                 //GenerarLink();
+                CargarWallpaper();
             }, 3000);
+            setTimeout(function(){
+                ActualizarDatos();
+            },5000)
         }
         Timestamp++;
 
@@ -269,12 +274,12 @@ window.onload = () => {
         let minutos = hoy.getMinutes()
         let segundos = hoy.getSeconds();
         
-        if(minutos == 0 && segundos < 5){
+        if(minutos == 0 && segundos < 6){
             let ruta = "formato"
             save(ruta)
             
         }
-        else if(minutos % 5  == 0 && segundos < 5){
+        else if(minutos != 0 && minutos % 5  == 0 && segundos < 6){
             let ruta = "currentData"
             save(ruta)
         }
@@ -332,7 +337,8 @@ window.onload = () => {
         document.querySelector("#Splash").classList.toggle("fade")
         document.querySelector("body").classList.toggle("enableScroll")
         document.querySelector("#Splash").classList.toggle("fadeDiv")
-    },2000)
+        CargarWallpaper()
+    },100)
 
 
 
