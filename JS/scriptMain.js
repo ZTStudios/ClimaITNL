@@ -238,12 +238,17 @@ window.onload = () => {
 
         let Timestamp = Math.floor(Date.now() / 1000)
         if(Timestamp % 300  == 0) {
+
             document.querySelector('.actualizacion').innerHTML = "Actualizando"
+
             const dot = document.querySelectorAll('.dot')
+
             dot.forEach((e)=>{
                 e.style.backgroundColor = 'orange';
             })
+
             console.log('Extrayendo Datos')
+
             setTimeout(function(){
                 console.log("Hola Mundo");
                 document.querySelector('.actualizacion').innerHTML = "Actualizado"
@@ -264,8 +269,8 @@ window.onload = () => {
         let minutos = hoy.getMinutes()
         let segundos = hoy.getSeconds();
         
-        if(minutos == 0){
-            let ruta = "formato" 
+        if(minutos == 0 && segundos < 5){
+            let ruta = "formato"
             save(ruta)
             
         }
