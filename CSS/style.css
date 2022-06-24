@@ -94,11 +94,34 @@ body{
     left: 94px;
     top: 105px;
     border-radius: 48px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, .1);
+    /*box-shadow: 0px 4px 4px rgba(0, 0, 0, .1);*/
     backdrop-filter: blur(32px);
     transition: 0.3s;
-    /*opacity: 0.2;*/
-    z-index: 0 ;
+    z-index: 0;
+}
+
+.color-noche{
+    background-color: rgba(98, 98, 98, .2);
+}
+
+.color-soleado{
+    background-color: rgba(255, 184, 0, .2);
+}
+
+.color-nublado{
+    background-color: rgba(24, 41, 53, .2);
+}
+
+.color-lluvia{
+    background-color: rgba(82, 97, 150, .2);
+}
+
+.color-nevado{
+    background-color: rgba(109, 148, 151, .2);
+}
+
+.color-tormenta{
+    background-color: rgba(24, 41, 53, .2);
 }
 
 .card-animacion{
