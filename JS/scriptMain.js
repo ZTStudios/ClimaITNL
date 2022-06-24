@@ -238,7 +238,7 @@ window.onload = () => {
     setInterval(function () {
 
         let Timestamp = Math.floor(Date.now() / 1000)
-        if(Timestamp % 60  == 0) {
+        if(Timestamp % 300  == 0) {
 
             document.body.classList.remove('card-animacion')
             document.querySelector('.actualizacion').innerHTML = "Actualizando"
