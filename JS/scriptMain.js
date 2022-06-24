@@ -137,14 +137,14 @@ window.onload = () => {
         })
 
         .then((object) => {
-            let Objeto = object;
+            let Objeto2 = object;
 
             newObjeto2.set({
-            obj:Objeto.Datos[0],
+            obj:Objeto2.Datos[0],
             });
         })
     
-        }else if (ruta == "currentData"){
+        }else{
     
             var newObjeto = Database.child("0-CurrentData");
             fetch('/Resource/pruebaMinutos.json')
@@ -238,7 +238,7 @@ window.onload = () => {
     setInterval(function () {
 
         let Timestamp = Math.floor(Date.now() / 1000)
-        if(Timestamp % 300  == 0) {
+        if(Timestamp % 60  == 0) {
 
             document.body.classList.remove('card-animacion')
             document.querySelector('.actualizacion').innerHTML = "Actualizando"
@@ -277,7 +277,6 @@ window.onload = () => {
         if(minutos == 0 && segundos < 6){
             let ruta = "formato"
             save(ruta)
-            
         }
         else if(minutos != 0 && minutos % 5  == 0 && segundos < 6){
             let ruta = "currentData"
