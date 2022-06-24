@@ -100,30 +100,6 @@ body{
     z-index: 0;
 }
 
-.color-noche{
-    background-color: rgba(98, 98, 98, .2);
-}
-
-.color-soleado{
-    background-color: rgba(255, 184, 0, .2);
-}
-
-.color-nublado{
-    background-color: rgba(24, 41, 53, .2);
-}
-
-.color-lluvia{
-    background-color: rgba(82, 97, 150, .2);
-}
-
-.color-nevado{
-    background-color: rgba(109, 148, 151, .2);
-}
-
-.color-tormenta{
-    background-color: rgba(24, 41, 53, .2);
-}
-
 .card-animacion{
     animation: fadeInAnimation ease 3s;
     animation-iteration-count: 1;
