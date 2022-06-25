@@ -269,8 +269,7 @@ body{
    grid-template-columns: 347px repeat(4, 198px) 347px;
    grid-template-rows: repeat(5, 200px);
    grid-column-gap: 20px;
-   grid-row-gap: 20px; 
-
+   grid-row-gap: 20px;
 }
         
 .Dashboard-Container-Big {
@@ -283,6 +282,9 @@ body{
 }
 
 .Dashboard-Container-Medium {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     border-radius: 25px;
     box-shadow: 4px 25px 50px 1px rgba(0, 0, 0, 0.25);
@@ -291,6 +293,9 @@ body{
 
 
 .Dashboard-Container-Small {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 200px;
     background-color: white;
@@ -306,6 +311,20 @@ body{
     border-radius: 25px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.container-rain-flex {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 180px;
+}
+
+.flex-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
@@ -356,7 +375,7 @@ body{
     grid-column: 4;
 }
 
-#index-calContainer {
+#index-uvContainer {
     grid-row: 3;
     grid-column: 5;
 }
@@ -509,6 +528,10 @@ body{
         grid-row-gap: 15px; 
     }
 
+    .card-container {
+        margin-top: 250px;
+    }
+
 }
 
 @media (max-width: 810px) {
@@ -570,7 +593,7 @@ body{
         grid-column: 1;
     }
     
-    #index-calContainer {
+    #index-uvContainer {
         grid-row: 5;
         grid-column: 2;
     }
@@ -593,6 +616,10 @@ body{
     #rain-yearContainer {
         grid-row: 6;
         grid-column: 3/5;
+    }
+
+    .container-rain-flex {
+        gap: 80px;
     }
 }
 
@@ -676,7 +703,7 @@ body{
         grid-column: 1;
     }
     
-    #index-calContainer {
+    #index-uvContainer {
         grid-row: 6;
         grid-column: 2;
     }
