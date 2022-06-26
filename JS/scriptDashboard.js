@@ -1,5 +1,4 @@
 
-    console.log('HolaCargueDashboard')
     
     
     function GenerarLink () {

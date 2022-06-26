@@ -1,6 +1,5 @@
 window.onload = () => {
     
-    console.log('Archivo Cargado')
         
     let LinkA = 'https://api.openweathermap.org/data/2.5/weather?lat=27.48&lon=-99.5105&units=metric&lang=sp&appid=75388a5617c4890016f8215a20d3ac3f';
     
@@ -79,6 +78,8 @@ window.onload = () => {
         dataApi.forEach((e)=>{
             e.classList.toggle("darkModeText");
         })
+
+        modificarChart()
         
     }
 
@@ -148,7 +149,7 @@ window.onload = () => {
                 hora:hora,
             });
         })
-    
+            modificarChart();
         }else{
 
             const fecha = new Date();
@@ -170,83 +171,80 @@ window.onload = () => {
         }
     }
 
-    
-    function GenerarGrafica () {
-        
-    var ref = firebase.database().ref('ClimaITNL')
-    
-    ref.limitToLast(5).on('value' , (snapshot) => {
+    let labels = [];
+    let valuesBar = [];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+                label: 'Presion Atmosferica',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: valuesBar,
+                fill: false,
+                cubicInterpolationMode: 'monotone',
+                tension: 0.4,
+                color: '#ffff',
+            }]
+        };
+
+    const config = {
+    type: 'line',
+    data: data,
+    options: {}
+    };
+
+
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+    function modificarChart () {
 
         let labels = [];
         let valuesBar = [];
-        
-        let DataList = snapshot.val();
-        
-        for (let i in DataList) {
-            valuesBar.push(DataList[i].obj.bar); 
-            labels.push(DataList[i].hora);
-        }
-        
-        console.log(labels);
-        console.log(valuesBar)
-    
-        const data = {
-            labels: labels,
-            datasets: [{
-                    label: 'Presion Atmosferica',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: valuesBar,
-                    fill: false,
-                    cubicInterpolationMode: 'monotone',
-                    tension: 0.4,
-                    color: '#ffff',
-                }]
-            };
-    
-            const config = {
-            type: 'line',
-            data: data,
-            options: {}
-            };
+
+        var ref = firebase.database().ref('ClimaITNL')
+
+        ref.limitToLast(5).on('value' , (snapshot) => {
             
-            const myChart = new Chart(
-                document.getElementById('myChart'),
-                config
-            );
+            
+            let labels = [];
+            let valuesBar = [];
+            let DataList = snapshot.val();
+            
+            for (let i in DataList) {
+                valuesBar.push(DataList[i].obj.bar);
+                labels.push(DataList[i].hora);
+            }
+
+            if(document.querySelector('#containerChart').className == 'Dashboard-Container-Big mode darkMode') {
+                myChart.options.scales.x.grid.color = '#a1a1a1'
+                myChart.options.scales.y.grid.color = '#a1a1a1'
+                myChart.options.scales.x.ticks.color = 'white'
+                myChart.options.scales.y.ticks.color = 'white'
+                myChart.options.color = 'white';
+                myChart.data.labels = labels;
+                myChart.data.datasets.forEach((dataset) => {
+                    dataset.data = valuesBar;
+                });
+                myChart.update();
+            }else {
+                myChart.options.scales.x.grid.color = '#a1a1a1'
+                myChart.options.scales.y.grid.color = '#a1a1a1'
+                myChart.options.scales.x.ticks.color = 'black'
+                myChart.options.scales.y.ticks.color = 'black'
+                myChart.options.color = 'black';
+                myChart.data.labels = labels
+                myChart.data.datasets.forEach((dataset) => {
+                    dataset.data = valuesBar;
+                });
+                myChart.update();
+            }
 
         })
-
-
-    }
-    
-    GenerarGrafica()
-    
-
-
-
-        function stylesGrafica() {
-            
-            /*
-            if(document.querySelector('#containerChart').className == 'Dashboard-Container-Big mode darkMode') {
-                console.log('Si')
-                let ctx = document.querySelector('#myChart')
-                ctx.options.scales.x.grid.color = '#a1a1a1'
-                ctx.options.scales.y.grid.color = '#a1a1a1'
-                ctx.options.scales.x.ticks.color = 'white'
-                ctx.options.scales.y.ticks.color = 'white'
-                ctx.update();
-            }else {
-                console.log('no')
-                let ctx = document.querySelector('#myChart')
-                ctx.options.scales.x.grid.color = '#a1a1a1'
-                ctx.options.scales.y.grid.color = '#a1a1a1'
-                ctx.options.scales.x.ticks.color = 'black'
-                ctx.options.scales.y.ticks.color = 'black'
-            }
-            */
-        }
-        
+    }   
         
     const readCurrentData = (rutaGrados) => {
     
@@ -335,8 +333,6 @@ window.onload = () => {
                 e.style.backgroundColor = 'orange';
             })
 
-            console.log('Extrayendo Datos')
-
             setTimeout(function(){
                 // console.log("Hola Mundo");
                 document.querySelector('.actualizacion').innerHTML = "Actualizado"
@@ -423,6 +419,7 @@ window.onload = () => {
         document.querySelector("body").classList.toggle("enableScroll")
         document.querySelector("#Splash").classList.toggle("fadeDiv")
         CargarWallpaper()
+        modificarChart();
     },100)
 
     
