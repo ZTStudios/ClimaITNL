@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,600;0,700;1,400&display=swap" rel="stylesheet"> 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="disableScroll">
     <div id="Splash">
@@ -87,7 +88,11 @@
         </main>
         <div class="Container-DashboardTotal">
             <div id="DashboardMain" class="Dashboard__Container-Main">
-                <div class="Dashboard-Container-Big mode"></div>
+                <div class="Dashboard-Container-Big mode">
+                    <div>
+                        <canvas id="myChart"></canvas>
+                      </div>
+                </div>
                 <div class="Dashboard-Container-Medium mode" id="temp-outContainer">
                     <div class="flex-content">
                         <h3 class="Titulo-Dashboard">Temperatura<br>Exterior</h3>
