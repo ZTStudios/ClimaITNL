@@ -30,7 +30,6 @@
             break;
             }
             y = day + " DE " + mes + " DEL " + year;
-            console.log(y)
             document.querySelector('#current_date').innerHTML = y;
         }
 

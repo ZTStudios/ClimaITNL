@@ -61,6 +61,7 @@ window.onload = () => {
 
     }
 
+
     // CargarWallpaper()
     
     function modoOcuroON(){
@@ -78,6 +79,7 @@ window.onload = () => {
         dataApi.forEach((e)=>{
             e.classList.toggle("darkModeText");
         })
+        
     }
 
     document.querySelector("#ColorMode").addEventListener("click", function() {
@@ -168,123 +170,74 @@ window.onload = () => {
         }
     }
 
-    const GenerarGraficaNight = () => {
-
-        const labels = [];
-        const valuesBar = [];
-        
-        var ref = firebase.database().ref('ClimaITNL')
-        
-        ref.limitToLast(5).on('value' , (snapshot) => {
-            console.log(snapshot.val())
-            
-            let DataList = snapshot.val();
-            
-            for (let i in DataList) {
-                console.log(DataList[i].obj.bar);
-                valuesBar.push(DataList[i].obj.bar);
-                console.log(DataList[i].hora);
-                labels.push(DataList[i].hora);
-            }
-
-            const data = {
-                labels: labels,
-                datasets: [{
-                        label: 'Presion Atmosferica',
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: valuesBar,
-                        fill: false,
-                        cubicInterpolationMode: 'monotone',
-                        tension: 0.4,
-                        color: '#ffff',
-                    }]
-                };
+    const labels = [];
+    const valuesBar = [];
     
-                const config = {
-                type: 'line',
-                data: data,
-                options: {
-                    scales:{
-                        x:{
-                            grid: {
-                                color : '#b1b3b5'
-                            },
-                            ticks:{
-                                color:"white",
-                            }
-                        },
-                        y:{
-                            grid: {
-                                color: '#b1b3b5',
-                            },
-                            ticks:{
-                                color:"white",
-                                backdropColor : 'white'
-                            }
-                        },
-                        
-                    }
-                }
-                };
-                
-                const myChart = new Chart(
-                    document.getElementById('myChart'),
-                    config
-                );
+    var ref = firebase.database().ref('ClimaITNL')
+    
+    ref.limitToLast(5).on('value' , (snapshot) => {
+        
+        let DataList = snapshot.val();
+        
+        for (let i in DataList) {
+            valuesBar.push(DataList[i].obj.bar); 
+            labels.push(DataList[i].hora);
+        }
+    
+        const data = {
+            labels: labels,
+            datasets: [{
+                    label: 'Presion Atmosferica',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: valuesBar,
+                    fill: false,
+                    cubicInterpolationMode: 'monotone',
+                    tension: 0.4,
+                    color: '#ffff',
+                }]
+            };
+    
+            const config = {
+            type: 'line',
+            data: data,
+            options: {}
+            };
             
+            const myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+
         })
-    }
 
-    const GenerarGraficaDay = () => {
+        stylesGrafica();
 
-        const labels = [];
-        const valuesBar = [];
-        
-        var ref = firebase.database().ref('ClimaITNL')
-        
-        ref.limitToLast(5).on('value' , (snapshot) => {
-            console.log(snapshot.val())
-            
-            let DataList = snapshot.val();
-            
-            for (let i in DataList) {
-                console.log(DataList[i].obj.bar);
-                valuesBar.push(DataList[i].obj.bar);
-                console.log(DataList[i].hora);
-                labels.push(DataList[i].hora);
+        function stylesGrafica() {
+
+
+            if(document.querySelector('#containerChart').className == 'Dashboard-Container-Big mode darkMode') {
+                console.log('Si')
+                const ctx = document.getElementById('myChart').getContext('2d');
+                console.log(ctx)
+                ctx.options.scales.x.grid.color = '#a1a1a1'
+                ctx.options.scales.y.grid.color = '#a1a1a1'
+                ctx.options.scales.x.ticks.color = 'white'
+                ctx.options.scales.y.ticks.color = 'white'
+                ctx.update();
+            }else {
+                console.log('no')
+                const ctx = document.getElementById('myChart').getContext('2d');
+                console.log(ctx)
+                ctx.options.scales.x.grid.color = '#a1a1a1'
+                ctx.options.scales.y.grid.color = '#a1a1a1'
+                ctx.options.scales.x.ticks.color = 'black'
+                ctx.options.scales.y.ticks.color = 'black'
+                ctx.update();
             }
-
-            const data = {
-                labels: labels,
-                datasets: [{
-                        label: 'Presion Atmosferica',
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: valuesBar,
-                        fill: false,
-                        cubicInterpolationMode: 'monotone',
-                        tension: 0.4,
-                        color: '#ffff',
-                    }]
-                };
-    
-                const config = {
-                type: 'line',
-                data: data,
-                options: {}
-                };
-                
-                const myChart = new Chart(
-                    document.getElementById('myChart'),
-                    config
-                );
-            
-        })
-    }
-
-      
-    
+        }
+        
+        
     const readCurrentData = (rutaGrados) => {
     
         var ref = firebase.database().ref('ClimaITNL')
@@ -355,8 +308,6 @@ window.onload = () => {
           }
     
         })
-
-        GenerarGraficaDay();
     
     }
 
