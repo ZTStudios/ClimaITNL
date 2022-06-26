@@ -170,56 +170,70 @@ window.onload = () => {
         }
     }
 
-    const labels = [];
-    const valuesBar = [];
     
-    var ref = firebase.database().ref('ClimaITNL')
     
-    ref.limitToLast(5).on('value' , (snapshot) => {
-        
-        let DataList = snapshot.val();
-        
-        for (let i in DataList) {
-            valuesBar.push(DataList[i].obj.bar); 
-            labels.push(DataList[i].hora);
-        }
-    
-        const data = {
-            labels: labels,
-            datasets: [{
-                    label: 'Presion Atmosferica',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: valuesBar,
-                    fill: false,
-                    cubicInterpolationMode: 'monotone',
-                    tension: 0.4,
-                    color: '#ffff',
-                }]
-            };
-    
-            const config = {
-            type: 'line',
-            data: data,
-            options: {}
-            };
-            
-            const myChart = new Chart(
-                document.getElementById('myChart'),
-                config
-            );
+    let labels = [];
+    let valuesBar = [];
 
+    function GuardarDatosBar () {
+        
+        var ref = firebase.database().ref('ClimaITNL')
+        
+        ref.limitToLast(5).on('value' , (snapshot) => {
+            
+            let DataList = snapshot.val();
+            
+            for (let i in DataList) {
+                valuesBar.push(DataList[i].obj.bar); 
+                labels.push(DataList[i].hora);
+            }
+            
+            let Arreglo = valuesBar;
+            return Arreglo;
         })
 
-        stylesGrafica();
+    }
+
+    console.log(GuardarDatosBar())
+
+
+    console.log(labels);
+    console.log(valuesBar)
+
+    const data = {
+        labels: labels,
+        datasets: [{
+                label: 'Presion Atmosferica',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: valuesBar,
+                fill: false,
+                cubicInterpolationMode: 'monotone',
+                tension: 0.4,
+                color: '#ffff',
+            }]
+        };
+
+        const config = {
+        type: 'line',
+        data: data,
+        options: {}
+        };
+        
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+        stylesGrafica()
+
 
         function stylesGrafica() {
-
-
+            
+            /*
             if(document.querySelector('#containerChart').className == 'Dashboard-Container-Big mode darkMode') {
                 console.log('Si')
-                const ctx = document.getElementById('myChart').getContext('2d');
-                console.log(ctx)
+                let ctx = document.querySelector('#myChart')
                 ctx.options.scales.x.grid.color = '#a1a1a1'
                 ctx.options.scales.y.grid.color = '#a1a1a1'
                 ctx.options.scales.x.ticks.color = 'white'
@@ -227,14 +241,13 @@ window.onload = () => {
                 ctx.update();
             }else {
                 console.log('no')
-                const ctx = document.getElementById('myChart').getContext('2d');
-                console.log(ctx)
+                let ctx = document.querySelector('#myChart')
                 ctx.options.scales.x.grid.color = '#a1a1a1'
                 ctx.options.scales.y.grid.color = '#a1a1a1'
                 ctx.options.scales.x.ticks.color = 'black'
                 ctx.options.scales.y.ticks.color = 'black'
-                ctx.update();
             }
+            */
         }
         
         
