@@ -160,6 +160,24 @@ window.onload = () => {
             })
         }
     }
+
+    const read = () => {
+
+        var ref = firebase.database().ref('ClimaITNL')
+    
+        
+        ref.limitToLast(5).on('value' , (snapshot) => {
+          console.log(snapshot.val())
+    
+          let DataList = snapshot.val();
+    
+          for (let i in DataList) {
+            console.log(DataList[i].obj.bar)  
+          }
+    
+        })
+          
+      }
     
     const readCurrentData = (rutaGrados) => {
     
@@ -350,7 +368,7 @@ window.onload = () => {
   const data = {
     labels: labels,
     datasets: [{
-      label: 'Presion',
+      label: 'Presion Atmosferica',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: [0, 10, 5, 2, 20, 30, 45],
