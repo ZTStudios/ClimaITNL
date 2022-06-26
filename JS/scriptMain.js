@@ -125,7 +125,8 @@ window.onload = () => {
                 let Objeto = object;
     
                 newObjeto.set({
-                obj:Objeto.Datos[0],
+                    obj:Objeto.Datos[0],
+                    hora: hora,
                 });
             })
 
@@ -139,12 +140,15 @@ window.onload = () => {
             let Objeto2 = object;
 
             newObjeto2.set({
-            obj:Objeto2.Datos[0],
+                obj:Objeto2.Datos[0],
+                hora:hora,
             });
         })
     
         }else{
-    
+
+            const fecha = new Date();
+            const hora = fecha.getHours()
             var newObjeto = Database.child("0-CurrentData");
             fetch('/Resource/pruebaMinutos.json')
             .then((response) => {
@@ -155,7 +159,8 @@ window.onload = () => {
                 let Objeto = object;
     
                 newObjeto.set({
-                obj:Objeto.Datos[0],
+                    obj:Objeto.Datos[0],
+                    hora: hora,
                 });
             })
         }
@@ -172,7 +177,7 @@ window.onload = () => {
           let DataList = snapshot.val();
     
           for (let i in DataList) {
-            console.log(DataList[i].obj.bar)  
+            console.log(DataList[i].obj.bar)
           }
     
         })
