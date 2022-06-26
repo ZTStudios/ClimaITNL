@@ -345,16 +345,18 @@ window.onload = () => {
     'March',
     'April',
     'May',
-    'June',
   ];
 
   const data = {
     labels: labels,
     datasets: [{
-      label: 'My First dataset',
+      label: 'Presion',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: [0, 10, 5, 2, 20, 30, 45],
+      fill: false,
+      cubicInterpolationMode: 'monotone',
+      tension: 0.4
     }]
   };
 
