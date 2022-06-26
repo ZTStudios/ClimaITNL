@@ -1,6 +1,5 @@
 window.onload = () => {
     
-    console.log('Archivo Cargado')
         
     let LinkA = 'https://api.openweathermap.org/data/2.5/weather?lat=27.48&lon=-99.5105&units=metric&lang=sp&appid=75388a5617c4890016f8215a20d3ac3f';
     
@@ -21,19 +20,21 @@ window.onload = () => {
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/SoleadoWall.png')"
                         document.querySelector(".card-container").style.backgroundColor = "#ffb80033";
                         document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Sun Cloud.svg'
-                        document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
+                        document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()   
                     }
                     else if (ObjJson.weather[0].main == 'Clouds') {
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/NubladoWall.png')"
                         document.querySelector(".card-container").style.backgroundColor = "#18293533";
                         document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Clouds.svg'
                         document.querySelector('#condicionClimaApi').innerHTML = 'NUBLADO'
+
                     }
                     else if (ObjJson.weather[0].main == 'Rain'){
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/LluviaWall.png')"
                         document.querySelector(".card-container").style.backgroundColor = "#52619633";
                         document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Rain Cloud.svg'
                         document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
+
                     }
                     else if (ObjJson.weather[0].main == 'Thunderstorm'){
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/TormentaWall.png')"
@@ -61,6 +62,7 @@ window.onload = () => {
 
     }
 
+
     // CargarWallpaper()
     
     function modoOcuroON(){
@@ -78,11 +80,14 @@ window.onload = () => {
         dataApi.forEach((e)=>{
             e.classList.toggle("darkModeText");
         })
+
+        modificarChart()
+        
     }
 
     document.querySelector("#ColorMode").addEventListener("click", function() {
         modoOcuroON()
-        });
+    });
         
     let seleccionarGrados = document.querySelector("#CambiarGrados");
 
@@ -109,8 +114,7 @@ window.onload = () => {
     
     const save = (ruta) => {
         if (ruta == "formato"){
-            const meses = ["-01-", "-02-", "-03-", "-04-", "-05-", "-06-","-07-", "-08-", "-09-", "-10-", "-11-", "-12-"
-        ];
+            const meses = ["-01-", "-02-", "-03-", "-04-", "-05-", "-06-","-07-", "-08-", "-09-", "-10-", "-11-", "-12-"];
     
         const fecha = new Date();
         const dia = fecha.getDate() + "-";
@@ -128,7 +132,8 @@ window.onload = () => {
                 let Objeto = object;
     
                 newObjeto.set({
-                obj:Objeto.Datos[0],
+                    obj:Objeto.Datos[0],
+                    hora: hora,
                 });
             })
 
@@ -142,12 +147,15 @@ window.onload = () => {
             let Objeto2 = object;
 
             newObjeto2.set({
-            obj:Objeto2.Datos[0],
+                obj:Objeto2.Datos[0],
+                hora:hora,
             });
         })
-    
+            modificarChart();
         }else{
-    
+
+            const fecha = new Date();
+            const hora = fecha.getHours()
             var newObjeto = Database.child("0-CurrentData");
             fetch('/Resource/pruebaMinutos.json')
             .then((response) => {
@@ -158,12 +166,88 @@ window.onload = () => {
                 let Objeto = object;
     
                 newObjeto.set({
-                obj:Objeto.Datos[0],
+                    obj:Objeto.Datos[0],
+                    hora: hora,
                 });
             })
         }
     }
-    
+
+    let labels = [];
+    let valuesBar = [];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+                label: 'Presion Atmosferica',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: valuesBar,
+                fill: false,
+                cubicInterpolationMode: 'monotone',
+                tension: 0.4,
+                color: '#ffff',
+            }]
+        };
+
+    const config = {
+    type: 'line',
+    data: data,
+    options: {}
+    };
+
+
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+    function modificarChart () {
+
+        let labels = [];
+        let valuesBar = [];
+
+        var ref = firebase.database().ref('ClimaITNL')
+
+        ref.limitToLast(5).on('value' , (snapshot) => {
+            
+            
+            let labels = [];
+            let valuesBar = [];
+            let DataList = snapshot.val();
+            
+            for (let i in DataList) {
+                valuesBar.push(DataList[i].obj.bar);
+                labels.push(DataList[i].hora);
+            }
+
+            if(document.querySelector('#containerChart').className == 'Dashboard-Container-Big mode darkMode') {
+                myChart.options.scales.x.grid.color = '#a1a1a1'
+                myChart.options.scales.y.grid.color = '#a1a1a1'
+                myChart.options.scales.x.ticks.color = 'white'
+                myChart.options.scales.y.ticks.color = 'white'
+                myChart.options.color = 'white';
+                myChart.data.labels = labels;
+                myChart.data.datasets.forEach((dataset) => {
+                    dataset.data = valuesBar;
+                });
+                myChart.update();
+            }else {
+                myChart.options.scales.x.grid.color = '#a1a1a1'
+                myChart.options.scales.y.grid.color = '#a1a1a1'
+                myChart.options.scales.x.ticks.color = 'black'
+                myChart.options.scales.y.ticks.color = 'black'
+                myChart.options.color = 'black';
+                myChart.data.labels = labels
+                myChart.data.datasets.forEach((dataset) => {
+                    dataset.data = valuesBar;
+                });
+                myChart.update();
+            }
+
+        })
+    }   
+        
     const readCurrentData = (rutaGrados) => {
     
         var ref = firebase.database().ref('ClimaITNL')
@@ -251,8 +335,6 @@ window.onload = () => {
                 e.style.backgroundColor = 'orange';
             })
 
-            console.log('Extrayendo Datos')
-
             setTimeout(function(){
                 // console.log("Hola Mundo");
                 document.querySelector('.actualizacion').innerHTML = "Actualizado"
@@ -339,10 +421,8 @@ window.onload = () => {
         document.querySelector("body").classList.toggle("enableScroll")
         document.querySelector("#Splash").classList.toggle("fadeDiv")
         CargarWallpaper()
+        modificarChart();
     },100)
 
-
-
-    console.log(GenerarLink())
     
 }    

@@ -254,86 +254,52 @@ body{
 
 /* ===========================> STYLES DASHBOARD */
 
-.Dashboard__Container-Main {
+.Container-DashboardTotal {
     width: 100%;
     height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.Dashboard-Row1 {
-    display: flex;
+.Dashboard__Container-Main {
+   height: 100vh;
+   display: grid;
+   grid-template-columns: 347px repeat(4, 198px) 347px;
+   grid-template-rows: repeat(5, 200px);
+   grid-column-gap: 20px;
+   grid-row-gap: 20px;
 }
-
-.Dashboard-Row2 {
-    margin-top: 36px;
+        
+.Dashboard-Container-Big {
+    width: 100%;
+    background-color: white;
+    box-shadow: 4px 25px 50px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    grid-row: 1/3;
+    grid-column: 2/6;
     display: flex;
-    gap: 35px;
-}
-
-.Dashboard-Row3 {
-    margin-top: 36px;
-    display: flex;
-    gap: 22px;
-}
-
-.Sup-Izq-Data {
-    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    gap: 36px;
-    padding-right: 35px;
-}
-
-.Sup-Der-Data {
-    display: flex;
-    flex-direction: column;
-    gap: 36px;
-    padding-left: 35px;
-}
-
-.Center-Container-Main {
-    display: flex;
-}
-
-.Center-Subcontainer {
-    display: flex;
-    gap: 22px;
-}
-
-.Center-Subcontainer-Sub {
-    display: flex;
-    gap: 19px;
-}
-
-.Center-Inf-Main {
-    display: flex;
-    gap: 22px;
-}
-
-.Dashboard-Container-Medium-Dark{
-    background-color: #494957;
 }
 
 .Dashboard-Container-Medium {
-    width: 347px;
-    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     border-radius: 25px;
     box-shadow: 4px 25px 50px 1px rgba(0, 0, 0, 0.25);
     background-color: white;
 }
 
-.Dashboard-Container-Big {
-    width: 853px;
-    height: 437px;
-    background-color: white;
-    box-shadow: 4px 25px 50px 1px rgba(0, 0, 0, 0.25);
-    border-radius: 25px;
-}
 
 .Dashboard-Container-Small {
-    width: 198px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     height: 200px;
     background-color: white;
     box-shadow: 4px 25px 50px 1px rgba(0, 0, 0, 0.25);
@@ -341,7 +307,7 @@ body{
 }
 
 .Dashboard-Container-Rain {
-    width: 590px;
+    width: 100%;
     height: 200px;
     background-color: white;
     box-shadow: 4px 25px 50px 1px rgba(0, 0, 0, 0.25);
@@ -349,28 +315,108 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
 
-.Dashboard-Container-Medium {
+.container-rain-flex {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    margin: 0;
-    text-align: center;
+    flex-direction: row;
+    gap: 180px;
 }
 
-.Dashboard-Container-Small {
+.flex-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    font-size: 20px;
-    margin: 0;
-    text-align: center;
+    align-items: center;
 }
+
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.subcontainer-chart {
+    width: 85%;
+}
+
+
+/* ========================> POSITION CARDS */
+
+#temp-outContainer {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+#hum-outContainer {
+    grid-row: 1;
+    grid-column: 6;
+}
+
+#tem-inContainer {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+#hum-inContainer {
+    grid-row: 2;
+    grid-column: 6;
+}
+
+#vel-windContainer {
+    grid-row: 3;
+    grid-column: 1;
+}
+
+#rad-solarContainer {
+    grid-row: 3;
+    grid-column: 6;
+}
+
+#dir-windContainer {
+    grid-row: 3;
+    grid-column: 2;
+}
+
+#chill-windContainer {
+    grid-row: 3;
+    grid-column: 3;
+}
+
+#index-heatContainer {
+    grid-row: 3;
+    grid-column: 4;
+}
+
+#index-uvContainer {
+    grid-row: 3;
+    grid-column: 5;
+}
+
+#rain-actualContainer {
+    grid-row: 4;
+    grid-column: 1/3;
+}
+
+#rain-yearContainer {
+    grid-row: 4;
+    grid-column: 5/7;
+}
+
+#point-bumbContainer {
+    grid-row: 4;
+    grid-column: 3;
+}
+
+#clockContainer {
+    grid-row: 4;
+    grid-column: 4;
+}
+
+
+/* ========================> POSITION CARDS */
 
 .Titulo-Dashboard {
     margin: 0;
@@ -405,8 +451,8 @@ body{
     height: 120px;
 }
 
-.Rain-Container {
-    width: 70%;
+.Dashboard-Container-Rain {
+    width: 100%;
     display: flex;
     justify-content: space-between;
 }
@@ -485,3 +531,219 @@ body{
     overflow: visible;
     z-index: 3;
 }
+
+/* ======================> MEDIA QUERYS */
+
+@media (max-width: 1366px) {
+
+    .Dashboard__Container-Main {
+        grid-template-columns: 270px repeat(4, 170px) 270px;
+        grid-template-rows: repeat(5, 200px);
+        grid-column-gap: 15px;
+        grid-row-gap: 15px; 
+    }
+
+    .card-container {
+        margin-top: 250px;
+    }
+
+}
+
+@media (max-width: 810px) {
+
+    .Dashboard__Container-Main {
+        grid-template-columns: repeat(4, 175px);
+        grid-template-rows: repeat(6, 200px);
+        grid-column-gap: px;
+        grid-row-gap: 20px;
+    }
+
+    .Dashboard-Container-Big {
+        grid-row: 1/3;
+        grid-column: 1/5;
+    }
+
+    #temp-outContainer {
+        grid-row: 3;
+        grid-column: 1;
+    }
+    
+    #hum-outContainer {
+        grid-row: 3;
+        grid-column: 2;
+    }
+    
+    #tem-inContainer {
+        grid-row: 3;
+        grid-column: 3;
+    }
+    
+    #hum-inContainer {
+        grid-row: 3;
+        grid-column: 4;
+    }
+    
+    #vel-windContainer {
+        grid-row: 4;
+        grid-column: 1;
+    }
+    
+    #rad-solarContainer {
+        grid-row: 4;
+        grid-column: 2;
+    }
+    
+    #dir-windContainer {
+        grid-row: 4;
+        grid-column: 3;
+    }
+    
+    #chill-windContainer {
+        grid-row: 4;
+        grid-column: 4;
+    }
+    
+    #index-heatContainer {
+        grid-row: 5;
+        grid-column: 1;
+    }
+    
+    #index-uvContainer {
+        grid-row: 5;
+        grid-column: 2;
+    }
+    
+    #point-bumbContainer {
+        grid-row: 5;
+        grid-column: 3;
+    }
+    
+    #clockContainer {
+        grid-row: 5;
+        grid-column: 4;
+    }
+
+    #rain-actualContainer {
+        grid-row: 6;
+        grid-column: 1/3;
+    }
+    
+    #rain-yearContainer {
+        grid-row: 6;
+        grid-column: 3/5;
+    }
+
+    .container-rain-flex {
+        gap: 80px;
+    }
+}
+
+@media (max-width: 412px) {
+
+    /* ==============> NAV STYLES */
+
+    .nav__ul-left-elements {
+        padding-left: 15px;
+    }
+
+    /* ==============> NAV STYLES */
+
+    .card-container {
+        width: 340px;
+        margin-top: 50px;
+    }
+
+    .container-img {
+        width: 230px;
+    }
+
+    .icono-temperatura {
+        width: 230px;
+    }
+
+    /* ==============> DASHBOARD POSITIONS */
+    
+    .Dashboard__Container-Main {
+        grid-template-columns: repeat(2, 160px);
+        grid-template-rows: repeat(8, 200px); 
+    }
+
+    .Dashboard-Container-Big {
+        grid-row: 1;
+        grid-column: 1/3;
+    }
+
+    #temp-outContainer {
+        grid-row: 2;
+        grid-column: 1;
+    }
+    
+    #hum-outContainer {
+        grid-row: 2;
+        grid-column: 2;
+    }
+    
+    #tem-inContainer {
+        grid-row: 3;
+        grid-column: 1;
+    }
+    
+    #hum-inContainer {
+        grid-row: 3;
+        grid-column: 2;
+    }
+    
+    #vel-windContainer {
+        grid-row: 4;
+        grid-column: 1;
+    }
+    
+    #rad-solarContainer {
+        grid-row: 4;
+        grid-column: 2;
+    }
+    
+    #dir-windContainer {
+        grid-row: 5;
+        grid-column: 1;
+    }
+    
+    #chill-windContainer {
+        grid-row: 5;
+        grid-column: 2;
+    }
+    
+    #index-heatContainer {
+        grid-row: 6;
+        grid-column: 1;
+    }
+    
+    #index-uvContainer {
+        grid-row: 6;
+        grid-column: 2;
+    }
+    
+    #point-bumbContainer {
+        grid-row: 7;
+        grid-column: 1;
+    }
+    
+    #clockContainer {
+        grid-row: 7;
+        grid-column: 2;
+    }
+
+    #rain-actualContainer {
+        grid-row: 8;
+        grid-column: 1/3;
+    }
+    
+    #rain-yearContainer {
+        grid-row: 9;
+        grid-column: 1/3;
+    }
+
+    /* ==============> DASHBOARD POSITIONS */
+}
+
+/* ======================> MEDIA QUERYS */
