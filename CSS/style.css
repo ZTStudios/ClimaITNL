@@ -279,6 +279,10 @@ body{
     border-radius: 25px;
     grid-row: 1/3;
     grid-column: 2/6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .Dashboard-Container-Medium {
@@ -327,6 +331,18 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.subcontainer-chart {
+    width: 85%;
+}
+
 
 /* ========================> POSITION CARDS */
 

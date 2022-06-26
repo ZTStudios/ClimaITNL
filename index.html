@@ -89,8 +89,11 @@
         <div class="Container-DashboardTotal">
             <div id="DashboardMain" class="Dashboard__Container-Main">
                 <div class="Dashboard-Container-Big mode">
-                    <div>
-                        <canvas id="myChart"></canvas>
+                    <h3 class="Titulo-Dashboard">Barometro</h3>
+                    <div class="chart-container">
+                        <div class="subcontainer-chart">
+                            <canvas id="myChart" width="700px"></canvas>
+                        </div>
                       </div>
                 </div>
                 <div class="Dashboard-Container-Medium mode" id="temp-outContainer">
@@ -182,15 +185,15 @@
                 </div>
                 <div class="Dashboard-Container-Rain mode" id="rain-yearContainer">
                     <div class="Rain-Container">
-                        <h3 class="Titulo-Dashboard" id="lluviaTitulo">LLUVIA ACTUAL</h3>
+                        <h3 class="Titulo-Dashboard" id="lluviaTitulo">LLUVIA AÑO</h3>
                         <div class="container-rain-flex">
                             <div class="RainDay-Container">
-                                <h3 class="Titulo-Dashboard">DIA</h3>
+                                <h3 class="Titulo-Dashboard">MES</h3>
                                 <img class="rain-img" src="Resource/Iconos/Dashboard/Calendar-Month.svg" alt="IconoTemperatura">
                                 <p id="rain-month" class="Data-Content-Dashboard">45℃</p>
                             </div>   
                             <div class="RainDay-Container mode">
-                                <h3 class="Titulo-Dashboard">TORMENTA</h3>
+                                <h3 class="Titulo-Dashboard">AÑO</h3>
                                 <img class="rain-img" src="Resource/Iconos/Dashboard/Calendar-Month.svg" alt="IconoTemperatura">
                                 <p id="rain-year" class="Data-Content-Dashboard">45℃</p>
                             </div>

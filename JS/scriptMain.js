@@ -21,19 +21,21 @@ window.onload = () => {
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/SoleadoWall.png')"
                         document.querySelector('.card-container').style.backgroundColor = "#ffb7002d";
                         document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Sun Cloud.svg'
-                        document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
+                        document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()   
                     }
                     else if (ObjJson.weather[0].main == 'Clouds') {
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/NubladoWall.png')"
                         document.querySelector('.card-container').style.backgroundColor = "#B5B5B4";
                         document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Clouds.svg'
                         document.querySelector('#condicionClimaApi').innerHTML = 'NUBLADO'
+
                     }
                     else if (ObjJson.weather[0].main == 'Rain'){
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/LluviaWall.png')"
                         document.querySelector('.card-container').style.backgroundColor = "#526196";
                         document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Rain Cloud.svg'
                         document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
+
                     }
                     else if (ObjJson.weather[0].main == 'Thunderstorm'){
                         document.body.style.backgroundImage = "url('../Resource/WallapaperState/TormentaWall.png')"
@@ -80,7 +82,7 @@ window.onload = () => {
 
     document.querySelector("#ColorMode").addEventListener("click", function() {
         modoOcuroON()
-        });
+    });
         
     let seleccionarGrados = document.querySelector("#CambiarGrados");
 
@@ -166,23 +168,122 @@ window.onload = () => {
         }
     }
 
-    const read = () => {
+    const GenerarGraficaNight = () => {
 
+        const labels = [];
+        const valuesBar = [];
+        
         var ref = firebase.database().ref('ClimaITNL')
-    
         
         ref.limitToLast(5).on('value' , (snapshot) => {
-          console.log(snapshot.val())
+            console.log(snapshot.val())
+            
+            let DataList = snapshot.val();
+            
+            for (let i in DataList) {
+                console.log(DataList[i].obj.bar);
+                valuesBar.push(DataList[i].obj.bar);
+                console.log(DataList[i].hora);
+                labels.push(DataList[i].hora);
+            }
+
+            const data = {
+                labels: labels,
+                datasets: [{
+                        label: 'Presion Atmosferica',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: valuesBar,
+                        fill: false,
+                        cubicInterpolationMode: 'monotone',
+                        tension: 0.4,
+                        color: '#ffff',
+                    }]
+                };
     
-          let DataList = snapshot.val();
-    
-          for (let i in DataList) {
-            console.log(DataList[i].obj.bar)
-          }
-    
+                const config = {
+                type: 'line',
+                data: data,
+                options: {
+                    scales:{
+                        x:{
+                            grid: {
+                                color : '#b1b3b5'
+                            },
+                            ticks:{
+                                color:"white",
+                            }
+                        },
+                        y:{
+                            grid: {
+                                color: '#b1b3b5',
+                            },
+                            ticks:{
+                                color:"white",
+                                backdropColor : 'white'
+                            }
+                        },
+                        
+                    }
+                }
+                };
+                
+                const myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+            
         })
-          
-      }
+    }
+
+    const GenerarGraficaDay = () => {
+
+        const labels = [];
+        const valuesBar = [];
+        
+        var ref = firebase.database().ref('ClimaITNL')
+        
+        ref.limitToLast(5).on('value' , (snapshot) => {
+            console.log(snapshot.val())
+            
+            let DataList = snapshot.val();
+            
+            for (let i in DataList) {
+                console.log(DataList[i].obj.bar);
+                valuesBar.push(DataList[i].obj.bar);
+                console.log(DataList[i].hora);
+                labels.push(DataList[i].hora);
+            }
+
+            const data = {
+                labels: labels,
+                datasets: [{
+                        label: 'Presion Atmosferica',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: valuesBar,
+                        fill: false,
+                        cubicInterpolationMode: 'monotone',
+                        tension: 0.4,
+                        color: '#ffff',
+                    }]
+                };
+    
+                const config = {
+                type: 'line',
+                data: data,
+                options: {}
+                };
+                
+                const myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+            
+        })
+    }
+
+      
     
     const readCurrentData = (rutaGrados) => {
     
@@ -254,6 +355,8 @@ window.onload = () => {
           }
     
         })
+
+        GenerarGraficaDay();
     
     }
 
@@ -361,37 +464,5 @@ window.onload = () => {
         CargarWallpaper()
     },100)
 
-    
-  const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-  ];
-
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'Presion Atmosferica',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
-      fill: false,
-      cubicInterpolationMode: 'monotone',
-      tension: 0.4
-    }]
-  };
-
-  const config = {
-    type: 'line',
-    data: data,
-    options: {}
-  };
-
-  const myChart = new Chart(
-    document.getElementById('myChart'),
-    config
-  );
     
 }    
