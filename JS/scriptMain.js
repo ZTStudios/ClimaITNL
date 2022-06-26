@@ -171,61 +171,58 @@ window.onload = () => {
     }
 
     
+    function GenerarGrafica () {
+        
+    var ref = firebase.database().ref('ClimaITNL')
     
-    let labels = [];
-    let valuesBar = [];
+    ref.limitToLast(5).on('value' , (snapshot) => {
 
-    function GuardarDatosBar () {
+        let labels = [];
+        let valuesBar = [];
         
-        var ref = firebase.database().ref('ClimaITNL')
+        let DataList = snapshot.val();
         
-        ref.limitToLast(5).on('value' , (snapshot) => {
+        for (let i in DataList) {
+            valuesBar.push(DataList[i].obj.bar); 
+            labels.push(DataList[i].hora);
+        }
+        
+        console.log(labels);
+        console.log(valuesBar)
+    
+        const data = {
+            labels: labels,
+            datasets: [{
+                    label: 'Presion Atmosferica',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: valuesBar,
+                    fill: false,
+                    cubicInterpolationMode: 'monotone',
+                    tension: 0.4,
+                    color: '#ffff',
+                }]
+            };
+    
+            const config = {
+            type: 'line',
+            data: data,
+            options: {}
+            };
             
-            let DataList = snapshot.val();
-            
-            for (let i in DataList) {
-                valuesBar.push(DataList[i].obj.bar); 
-                labels.push(DataList[i].hora);
-            }
-            
-            let Arreglo = valuesBar;
-            return Arreglo;
+            const myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+
         })
 
+
     }
+    
+    GenerarGrafica()
+    
 
-    console.log(GuardarDatosBar())
-
-
-    console.log(labels);
-    console.log(valuesBar)
-
-    const data = {
-        labels: labels,
-        datasets: [{
-                label: 'Presion Atmosferica',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: valuesBar,
-                fill: false,
-                cubicInterpolationMode: 'monotone',
-                tension: 0.4,
-                color: '#ffff',
-            }]
-        };
-
-        const config = {
-        type: 'line',
-        data: data,
-        options: {}
-        };
-        
-        const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
-
-        stylesGrafica()
 
 
         function stylesGrafica() {
