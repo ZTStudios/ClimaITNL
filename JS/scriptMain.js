@@ -113,6 +113,19 @@ window.onload = () => {
     var Database = firebase.database().ref('ClimaITNL')
     
     const save = (ruta) => {
+
+        let Fecha = Math.floor(Date.now() / 1000)
+        console.log(Fecha);
+    
+        let keyApi = "api-keypmgoawwwjjeuwiuaypj0nukw98dnqxyzstation-id139322t"
+        let Apiformat = keyApi + Fecha;
+        let hash = CryptoJS.HmacSHA256(Apiformat ,"wb0zbi95gnwskkl4uybcgli6iqgaair5");
+        let StringEncriptado = CryptoJS.enc.Hex.stringify(hash);
+        console.log(StringEncriptado);
+    
+        let LinkCurrentPeticion = "https://api.weatherlink.com/v2/current/139322?api-key=pmgoawwwjjeuwiuaypj0nukw98dnqxyz&t=" + Fecha + "&api-signature=" + StringEncriptado;
+        console.log(LinkCurrentPeticion);
+
         if (ruta == "formato"){
             const meses = ["-01-", "-02-", "-03-", "-04-", "-05-", "-06-","-07-", "-08-", "-09-", "-10-", "-11-", "-12-"];
     
@@ -124,49 +137,49 @@ window.onload = () => {
     
         let fechaActual = año + mes + dia + hora
         var newObjeto = Database.child(fechaActual);
-        fetch('/Resource/pruebaHora.json')
+        fetch(LinkCurrentPeticion)
             .then((response) => {
                 return response.json();
             })
             .then((object) => {
                 let Objeto = object;
+                console.log(Objeto.sensors[0].data[0])
     
                 newObjeto.set({
-                    obj:Objeto.Datos[0],
+                    obj:Objeto.sensors[0].data[0],
                     hora: hora,
                 });
             })
 
         var newObjeto2 = Database.child("0-CurrentData");
-        fetch('/Resource/pruebaMinutos.json')
-        .then((response) => {
-            return response.json();
-        })
-
-        .then((object) => {
-            let Objeto2 = object;
-
-            newObjeto2.set({
-                obj:Objeto2.Datos[0],
-                hora:hora,
-            });
-        })
+        fetch(LinkCurrentPeticion)
+            .then((response) => {
+                return response.json();
+            })
+            .then((object) => {
+                let Objeto2 = object;
+                newObjeto2.set({
+                    obj:Objeto.sensors[0].data[0],
+                    hora: hora,
+                });
+            })
+        
             modificarChart();
         }else{
 
             const fecha = new Date();
             const hora = fecha.getHours()
             var newObjeto = Database.child("0-CurrentData");
-            fetch('/Resource/pruebaMinutos.json')
+            fetch(LinkCurrentPeticion)
             .then((response) => {
                 return response.json();
             })
     
             .then((object) => {
                 let Objeto = object;
-    
+                console.log(Objeto.sensors[0].data[0])
                 newObjeto.set({
-                    obj:Objeto.Datos[0],
+                    obj:Objeto.sensors[0].data[0],
                     hora: hora,
                 });
             })
@@ -278,7 +291,7 @@ window.onload = () => {
                   document.querySelector('#hum_in').innerHTML = DataList[i].obj.hum_in + '%'
                   document.querySelector('#hum_out').innerHTML = DataList[i].obj.hum_out + '%'
                   document.querySelector('#vel_wind').innerHTML = ConvertirKilometros(velocidadViento) + ' km'
-                  document.querySelector('#dir_wind').innerHTML = DataList[i].obj.wind_dir + ' km/h'
+                  document.querySelector('#dir_wind').innerHTML = DataList[i].obj.wind_dir
                   document.querySelector('#cold_wind').innerHTML = RedondearDecimales(coldWind) + ' °C'
                   document.querySelector('#index_heat').innerHTML = RedondearDecimales(indexHeat) + ' °C'
                   document.querySelector('#uv').innerHTML = DataList[i].obj.uv
@@ -301,7 +314,7 @@ window.onload = () => {
                 document.querySelector('#hum_in').innerHTML = DataList[i].obj.hum_in + '%'
                 document.querySelector('#hum_out').innerHTML = DataList[i].obj.hum_out + '%'
                 document.querySelector('#vel_wind').innerHTML = velocidadViento + ' mph'
-                document.querySelector('#dir_wind').innerHTML = DataList[i].obj.wind_dir + ' mph'
+                document.querySelector('#dir_wind').innerHTML = DataList[i].obj.wind_dir
                 document.querySelector('#cold_wind').innerHTML = coldWind + ' °F'
                 document.querySelector('#index_heat').innerHTML = indexHeat + ' °F'
                 document.querySelector('#uv').innerHTML = DataList[i].obj.uv
