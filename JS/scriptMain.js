@@ -115,16 +115,14 @@ window.onload = () => {
     const save = (ruta) => {
 
         let Fecha = Math.floor(Date.now() / 1000)
-        console.log(Fecha);
+
     
         let keyApi = "api-keypmgoawwwjjeuwiuaypj0nukw98dnqxyzstation-id139322t"
         let Apiformat = keyApi + Fecha;
         let hash = CryptoJS.HmacSHA256(Apiformat ,"wb0zbi95gnwskkl4uybcgli6iqgaair5");
         let StringEncriptado = CryptoJS.enc.Hex.stringify(hash);
-        console.log(StringEncriptado);
     
         let LinkCurrentPeticion = "https://api.weatherlink.com/v2/current/139322?api-key=pmgoawwwjjeuwiuaypj0nukw98dnqxyz&t=" + Fecha + "&api-signature=" + StringEncriptado;
-        console.log(LinkCurrentPeticion);
 
         if (ruta == "formato"){
             const meses = ["-01-", "-02-", "-03-", "-04-", "-05-", "-06-","-07-", "-08-", "-09-", "-10-", "-11-", "-12-"];
@@ -143,7 +141,7 @@ window.onload = () => {
             })
             .then((object) => {
                 let Objeto = object;
-                console.log(Objeto.sensors[0].data[0])
+          
     
                 newObjeto.set({
                     obj:Objeto.sensors[0].data[0],
@@ -159,7 +157,7 @@ window.onload = () => {
             .then((object) => {
                 let Objeto2 = object;
                 newObjeto2.set({
-                    obj:Objeto.sensors[0].data[0],
+                    obj:Objeto2.sensors[0].data[0],
                     hora: hora,
                 });
             })
@@ -177,7 +175,6 @@ window.onload = () => {
     
             .then((object) => {
                 let Objeto = object;
-                console.log(Objeto.sensors[0].data[0])
                 newObjeto.set({
                     obj:Objeto.sensors[0].data[0],
                     hora: hora,
