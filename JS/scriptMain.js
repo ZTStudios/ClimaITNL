@@ -432,7 +432,7 @@ window.onload = () => {
         document.querySelector("#Splash").classList.toggle("fadeDiv")
         CargarWallpaper()
         modificarChart();
-    },100)
+    },1000)
 
     
 }    
