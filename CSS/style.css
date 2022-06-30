@@ -489,6 +489,7 @@ body{
     height: 100%;
     position: absolute;
     background-image: url("../Resource/Background-splash.svg");
+    background-size: cover;
     display: flex;
     flex-direction: column;
     opacity: 1;
@@ -496,16 +497,16 @@ body{
     left: 0;
     z-index: 2  ;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
 }
 
 .logo{
-    margin-right: 100px;
-    width: 300px;
+    margin-left: 280px;
+    width: 380px;
 }
 
 .logoTitle{
-    margin-right: 100px;
+    margin-left: 170px;
     font-size: 3.5em;
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
