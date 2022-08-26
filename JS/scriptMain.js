@@ -17,41 +17,41 @@ window.onload = () => {
                 if(HoraActual.getHours() >= 8  && HoraActual.getHours() < 20) {
 
                     if (ObjJson.weather[0].main == 'Clear' || ObjJson.weather[0].description == 'nubes dispersas') {
-                        document.body.style.backgroundImage = "url('../Resource/WallapaperState/SoleadoWall.png')"
+                        document.body.style.backgroundImage = "url('../../ClimaITNL/Resource/WallapaperState/SoleadoWall.png')"
                         document.querySelector(".card-container").style.backgroundColor = "#ffb80033";
-                        document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Sun Cloud.svg'
+                        document.querySelector('#icon-Card').src = '../../ClimaITNL//Resource/Iconos/Card/Sun Cloud.svg'
                         document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()   
                     }
                     else if (ObjJson.weather[0].main == 'Clouds') {
-                        document.body.style.backgroundImage = "url('../Resource/WallapaperState/NubladoWall.png')"
+                        document.body.style.backgroundImage = "url('../../ClimaITNL/Resource/WallapaperState/NubladoWall.png')"
                         document.querySelector(".card-container").style.backgroundColor = "#18293533";
-                        document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Clouds.svg'
+                        document.querySelector('#icon-Card').src = '../../ClimaITNL/Resource/Iconos/Card/Clouds.svg'
                         document.querySelector('#condicionClimaApi').innerHTML = 'NUBLADO'
 
                     }
                     else if (ObjJson.weather[0].main == 'Rain'){
-                        document.body.style.backgroundImage = "url('../Resource/WallapaperState/LluviaWall.png')"
+                        document.body.style.backgroundImage = "url('../../ClimaITNL/Resource/WallapaperState/LluviaWall.png')"
                         document.querySelector(".card-container").style.backgroundColor = "#52619633";
-                        document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Rain Cloud.svg'
+                        document.querySelector('#icon-Card').src = '../../ClimaITNL/Resource/Iconos/Card/Rain Cloud.svg'
                         document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
 
                     }
                     else if (ObjJson.weather[0].main == 'Thunderstorm'){
-                        document.body.style.backgroundImage = "url('../Resource/WallapaperState/TormentaWall.png')"
+                        document.body.style.backgroundImage = "url('../../ClimaITNL/Resource/WallapaperState/TormentaWall.png')"
                         document.querySelector(".card-container").style.backgroundColor = "#18293533";
-                        document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Thunder Cloud.svg'
+                        document.querySelector('#icon-Card').src = '../../ClimaITNL/Resource/Iconos/Card/Thunder Cloud.svg'
                         document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
                     }
                     else if (ObjJson.weather[0].main == 'Snow'){
-                        document.body.style.backgroundImage = "url('../Resource/WallapaperState/NevadoWall.png')"
+                        document.body.style.backgroundImage = "url('../../ClimaITNL/Resource/WallapaperState/NevadoWall.png')"
                         document.querySelector(".card-container").style.backgroundColor = "#6d949733";
-                        document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Snow Cloud.svg'
+                        document.querySelector('#icon-Card').src = '../../ClimaITNL/Resource/Iconos/Card/Snow Cloud.svg'
                         document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
                     } 
                 }
                 else{
-                    document.body.style.backgroundImage = "url('../Resource/WallapaperState/NocheWall.png')"
-                    document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Night Cloud.svg'
+                    document.body.style.backgroundImage = "url('../../ClimaITNL/Resource/WallapaperState/NocheWall.png')"
+                    document.querySelector('#icon-Card').src = '../../ClimaITNL/Resource/Iconos/Card/Night Cloud.svg'
                     /*document.querySelector('.card-container').classList.add("color-noche");*/
                     document.querySelector(".card-container").style.backgroundColor = "#62626233";
                     document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
