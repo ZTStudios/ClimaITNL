@@ -150,7 +150,7 @@ window.onload = () => {
             })
 
         var newObjeto2 = Database.child("0-CurrentData");
-        fetch(LinkCurrentPeticion)
+        fetch(LinkCurrentPeticion, {mode: 'no-cors'})
             .then((response) => {
                 return response.json();
             })
@@ -168,7 +168,7 @@ window.onload = () => {
             const fecha = new Date();
             const hora = fecha.getHours()
             var newObjeto = Database.child("0-CurrentData");
-            fetch(LinkCurrentPeticion)
+            fetch(LinkCurrentPeticion, {mode: 'no-cors'})
             .then((response) => {
                 return response.json();
             })
