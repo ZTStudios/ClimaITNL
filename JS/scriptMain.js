@@ -122,7 +122,7 @@ window.onload = () => {
         let hash = CryptoJS.HmacSHA256(Apiformat ,"wb0zbi95gnwskkl4uybcgli6iqgaair5");
         let StringEncriptado = CryptoJS.enc.Hex.stringify(hash);
     
-        let LinkCurrentPeticion = "https://api.weatherlink.com/v2/current/139322?api-key=pmgoawwwjjeuwiuaypj0nukw98dnqxyz&t=" + Fecha + "&api-signature=" + StringEncriptado;
+        let LinkCurrentPeticion = "http://cors.io/?u=https://api.weatherlink.com/v2/current/139322?api-key=pmgoawwwjjeuwiuaypj0nukw98dnqxyz&t=" + Fecha + "&api-signature=" + StringEncriptado;
 
         if (ruta == "formato"){
             const meses = ["-01-", "-02-", "-03-", "-04-", "-05-", "-06-","-07-", "-08-", "-09-", "-10-", "-11-", "-12-"];
