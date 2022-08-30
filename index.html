@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
     <script src="JS/scriptMain.js"></script>
     <script src="JS/scriptDashboard.js"></script>
-    <link rel="stylesheet" href="../ClimaITNL/CSS/style.css">
+    <link rel="stylesheet" href="CSS/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
@@ -18,30 +18,30 @@
 </head>
 <body class="disableScroll">
     <div id="Splash">
-        <img class="logo" src="/Resource/ZT_Studios_V3_transparent.png" alt="zt logo">
+        <img class="logo" src="Resource/ZT_Studios_V3_transparent.png" alt="zt logo">
         <h1 class="logoTitle">ZT STUDIOS</h1>
     </div>
     <header>
         <nav class="nav">
             <ul class="nav__ul-left-elements">
                 <li class="li-ITNL">
-                    <img src="../ClimaITNL/Resource/Iconos/Nav/Location.svg" alt="Location">
+                    <img src="Resource/Iconos/Nav/Location.svg" alt="Location">
                     <label class="lbl-ITNL">ITNL</label>
                 </li>
             </ul>
             <ul class="nav__ul-right-elements">
                 <li>
                     <a id="ColorMode">
-                        <img src="../ClimaITNL/Resource/Iconos/Nav/Colormode.svg" alt="Cambiar">
+                        <img src="Resource/Iconos/Nav/Colormode.svg" alt="Cambiar">
                     </a>
                 </li>
                 <li>
                     <a href="#DashboardMain">
-                        <img src="../ClimaITNL/Resource/Iconos/Nav/Stats.svg" alt="Estadisticas">
+                        <img src="Resource/Iconos/Nav/Stats.svg" alt="Estadisticas">
                     </a>
                 </li>
                 <li id="CambiarGrados" class="centigrados">
-                    <img src="../ClimaITNL/Resource/Iconos/Nav/Exchange.svg" alt="Cambiar">
+                    <img src="Resource/Iconos/Nav/Exchange.svg" alt="Cambiar">
                 </li>
             </ul>
         </nav>
@@ -49,7 +49,7 @@
       <main class="main">
             <div class="card-container">
                 <div class="container-img">
-                    <img id="icon-Card" class="icono-temperatura" src="../ClimaITNL/Resource/Iconos/Card/Clouds.svg" alt="Icon">
+                    <img id="icon-Card" class="icono-temperatura" src="Resource/Iconos/Card/Clouds.svg" alt="Icon">
                 </div>
                 <div class="card-content">
                     <div class="contenedor-temperatura">
@@ -69,12 +69,12 @@
                         </div>
                     </div>
                     <div class="row">
-                        <img class="icono-humedad" src="../ClimaITNL/Resource/Iconos/Card/Card-Humidity.svg" alt="IconHumedad">
+                        <img class="icono-humedad" src="Resource/Iconos/Card/Card-Humidity.svg" alt="IconHumedad">
                         <span id="humedadClimaApi" class="humedad">
                             50%
                         </span>  <!--Humedad-->
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <img class="icono-viento" src="../ClimaITNL/Resource/Iconos/Card/Card-Wind.svg" alt="IconViento">
+                        <img class="icono-viento" src="Resource/Iconos/Card/Card-Wind.svg" alt="IconViento">
                         <span id="velClimaApi" class="velocidadviento">
                            5 mph
                         </span>  <!--Velocidad viento-->
@@ -99,70 +99,70 @@
                 <div class="Dashboard-Container-Medium mode" id="temp-outContainer">
                     <div class="flex-content">
                         <h3 class="Titulo-Dashboard">Temperatura<br>Exterior</h3>
-                        <img class="img-Dashboard" src="../ClimaITNL/Resource/Iconos/Dashboard/Temperature.svg" alt="IconoTemperatura">
+                        <img class="img-Dashboard" src="Resource/Iconos/Dashboard/Temperature.svg" alt="IconoTemperatura">
                         <p id="temp_out" class="Data-Content-Dashboard">45℃</p>
                     </div>
                 </div>
                 <div class="Dashboard-Container-Medium mode" id="hum-outContainer">
                     <div class="flex-content">
                         <h3 class="Titulo-Dashboard">Humedad<br>Exterior</h3>
-                        <img class="img-Dashboard" src="../ClimaITNL/Resource/Iconos/Dashboard/Humidity.svg" alt="IconoTemperatura">
+                        <img class="img-Dashboard" src="Resource/Iconos/Dashboard/Humidity.svg" alt="IconoTemperatura">
                         <p id="hum_out" class="Data-Content-Dashboard">45%</p>
                     </div>
                 </div>
                 <div class="Dashboard-Container-Medium mode" id="tem-inContainer">
                     <div class="flex-content">
                         <h3 class="Titulo-Dashboard">Temperatura<br>Interior</h3>
-                        <img class="img-Dashboard" src="../ClimaITNL/Resource/Iconos/Dashboard/Temperature.svg" alt="IconoTemperatura">
+                        <img class="img-Dashboard" src="Resource/Iconos/Dashboard/Temperature.svg" alt="IconoTemperatura">
                         <p id="temp_in" class="Data-Content-Dashboard">45℃</p>
                     </div>
                 </div>
                 <div class="Dashboard-Container-Medium mode" id="hum-inContainer">
                     <div class="flex-content">
                         <h3 class="Titulo-Dashboard">Humedad<br>Interior</h3>
-                        <img class="img-Dashboard" src="../ClimaITNL/Resource/Iconos/Dashboard/Humidity.svg" alt="IconoTemperatura">
+                        <img class="img-Dashboard" src="Resource/Iconos/Dashboard/Humidity.svg" alt="IconoTemperatura">
                         <p id="hum_in" class="Data-Content-Dashboard">45%</p>
                     </div>
                 </div>
                 <div class="Dashboard-Container-Medium mode" id="vel-windContainer">
                     <div class="flex-content">
                         <h3 class="Titulo-Dashboard">Velocidad<br>Viento</h3>
-                        <img id="Wind-Img" class="img-Dashboard" src="../ClimaITNL/Resource/Iconos/Dashboard/Wind Speed.svg" alt="IconoTemperatura">
+                        <img id="Wind-Img" class="img-Dashboard" src="Resource/Iconos/Dashboard/Wind Speed.svg" alt="IconoTemperatura">
                         <p id="vel_wind" class="Data-Content-Dashboard">45mph</p>
                     </div>
                 </div>
                 <div class="Dashboard-Container-Medium mode" id="rad-solarContainer">
                     <div class="flex-content">
                         <h3 class="Titulo-Dashboard">Radiacion<br>Solar</h3>
-                        <img class="img-Dashboard" src="../ClimaITNL/Resource/Iconos/Dashboard/Solar radiation.svg" alt="IconoTemperatura">
+                        <img class="img-Dashboard" src="Resource/Iconos/Dashboard/Solar radiation.svg" alt="IconoTemperatura">
                         <p id="rad_sol" class="Data-Content-Dashboard">45℃</p>
                     </div>
                 </div>
                 <div class="Dashboard-Container-Small mode" id="dir-windContainer">
                     <div class="flex-content">
                         <h3 class="Titulo-Dashboard">Direccion<br>Viento</h3>
-                        <img class="img-Dashboard" src="../ClimaITNL/Resource/Iconos/Dashboard/Wind-Dir.svg" alt="IconoTemperatura">
+                        <img class="img-Dashboard" src="Resource/Iconos/Dashboard/Wind-Dir.svg" alt="IconoTemperatura">
                         <p id="dir_wind" class="Data-Content-Dashboard">45℃</p>
                     </div>
                 </div>
                 <div class="Dashboard-Container-Small mode" id="chill-windContainer">
                     <div class="flex-content">
                         <h3 class="Titulo-Dashboard">Viento<br>Frio</h3>
-                        <img  class="img-Dashboard" src="../ClimaITNL/Resource/Iconos/Dashboard/Wind-cold.svg" alt="IconoTemperatura">
+                        <img  class="img-Dashboard" src="Resource/Iconos/Dashboard/Wind-cold.svg" alt="IconoTemperatura">
                         <p id="cold_wind" class="Data-Content-Dashboard">45℃</p>
                     </div>
                 </div>
                 <div class="Dashboard-Container-Small mode" id="index-heatContainer">
                     <div class="flex-content">
                         <h3 class="Titulo-Dashboard">Indice<br>Calorifico</h3>
-                        <img class="img-Dashboard" src="../ClimaITNL/Resource/Iconos/Dashboard/Index-Heat.svg" alt="IconoTemperatura">
+                        <img class="img-Dashboard" src="Resource/Iconos/Dashboard/Index-Heat.svg" alt="IconoTemperatura">
                         <p id="index_heat" class="Data-Content-Dashboard">45℃</p>
                     </div>
                 </div>
                 <div class="Dashboard-Container-Small mode" id="index-uvContainer">
                     <div class="flex-content">
                         <h3 class="Titulo-Dashboard">Indice<br>UV</h3>
-                        <img class="img-Dashboard" src="../ClimaITNL/Resource/Iconos/Dashboard/UV.svg" alt="IconoTemperatura">
+                        <img class="img-Dashboard" src="Resource/Iconos/Dashboard/UV.svg" alt="IconoTemperatura">
                         <p id="uv" class="Data-Content-Dashboard">45℃</p>
                     </div>
                 </div>
@@ -172,12 +172,12 @@
                         <div class="container-rain-flex">
                             <div class="RainDay-Container">
                                 <h3 class="Titulo-Dashboard">DIA</h3>
-                                <img class="rain-img" src="../ClimaITNL/Resource/Iconos/Dashboard/Cloud-Rain.svg" alt="IconoTemperatura">
+                                <img class="rain-img" src="Resource/Iconos/Dashboard/Cloud-Rain.svg" alt="IconoTemperatura">
                                 <p id="rain-day" class="Data-Content-Dashboard">45℃</p>
                             </div>   
                             <div class="RainDay-Container mode">
                                 <h3 class="Titulo-Dashboard">TORMENTA</h3>
-                                <img class="rain-img" src="../ClimaITNL/Resource/Iconos/Dashboard/Cloud-Lightning-Rain.svg" alt="IconoTemperatura">
+                                <img class="rain-img" src="Resource/Iconos/Dashboard/Cloud-Lightning-Rain.svg" alt="IconoTemperatura">
                                 <p id="storm" class="Data-Content-Dashboard">45℃</p>
                             </div>
                         </div>
@@ -189,12 +189,12 @@
                         <div class="container-rain-flex">
                             <div class="RainDay-Container">
                                 <h3 class="Titulo-Dashboard">MES</h3>
-                                <img class="rain-img" src="../ClimaITNL/Resource/Iconos/Dashboard/Calendar-Month.svg" alt="IconoTemperatura">
+                                <img class="rain-img" src="Resource/Iconos/Dashboard/Calendar-Month.svg" alt="IconoTemperatura">
                                 <p id="rain-month" class="Data-Content-Dashboard">45℃</p>
                             </div>   
                             <div class="RainDay-Container mode">
                                 <h3 class="Titulo-Dashboard">AÑO</h3>
-                                <img class="rain-img" src="../ClimaITNL/Resource/Iconos/Dashboard/Calendar-Month.svg" alt="IconoTemperatura">
+                                <img class="rain-img" src="Resource/Iconos/Dashboard/Calendar-Month.svg" alt="IconoTemperatura">
                                 <p id="rain-year" class="Data-Content-Dashboard">45℃</p>
                             </div>
                         </div>
@@ -203,14 +203,14 @@
                 <div class="Dashboard-Container-Small mode" id="point-bumbContainer">
                     <div class="flex-content">
                         <h3 class="Titulo-Dashboard">PUNTO DE<br>ROCIO</h3>
-                        <img class="img-Dashboard" src="../ClimaITNL/Resource/Iconos/Dashboard/Dew point.svg" alt="IconoTemperatura">
+                        <img class="img-Dashboard" src="Resource/Iconos/Dashboard/Dew point.svg" alt="IconoTemperatura">
                         <p id="point-dew" class="Data-Content-Dashboard">45℃</p>
                     </div>
                 </div>
                 <div class="Dashboard-Container-Small mode" id="clockContainer">
                     <div class="flex-content">
                         <h3 class="Titulo-Dashboard">Hora</h3>
-                        <img id="Clock-Img" class="img-Dashboard" src="../ClimaITNL/Resource/Iconos/Dashboard/Clock.svg" alt="IconoTemperatura">
+                        <img id="Clock-Img" class="img-Dashboard" src="Resource/Iconos/Dashboard/Clock.svg" alt="IconoTemperatura">
                         <p id="Clock" class="Data-Content-Dashboard">45℃</p>
                     </div>
                 </div>
