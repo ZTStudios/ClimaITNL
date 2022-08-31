@@ -537,6 +537,20 @@ body{
 
 /* ======================> MEDIA QUERYS */
 
+@media (max-width: 2560px) {
+    
+    .card-container {
+        margin-top: 100px;
+    }
+    .Dashboard__Container-Main{
+        grid-template-columns: 320px repeat(4, 170px) 320px;
+        grid-template-rows: repeat(5, 200px);
+        grid-column-gap: 15px;
+        grid-row-gap: 15px; 
+    }
+
+}
+
 @media (max-width: 1366px) {
 
     .Dashboard__Container-Main {
