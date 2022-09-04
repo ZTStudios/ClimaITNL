@@ -1,14 +1,14 @@
 window.onload = () => {
     
         
-    let LinkA = 'https://api.openweathermap.org/data/2.5/weather?lat=27.48&lon=-99.5105&units=metric&lang=sp&appid=75388a5617c4890016f8215a20d3ac3f';
+    let apiFree = 'https://api.openweathermap.org/data/2.5/weather?lat=27.48&lon=-99.5105&units=metric&lang=sp&appid=75388a5617c4890016f8215a20d3ac3f';
     
     async function CargarWallpaper() {
         
         let HoraActual = new Date();
         var ObjJson = "initial";
 
-        await fetch(LinkA)
+        await fetch(apiFree)
             .then(res => res.json())
             .then(data => {
                 ObjJson = data;
@@ -19,39 +19,39 @@ window.onload = () => {
                     if (ObjJson.weather[0].main == 'Clear' || ObjJson.weather[0].description == 'nubes dispersas') {
                         document.body.style.backgroundImage = "url('Resource/WallapaperState/SoleadoWall.png')"
                         document.querySelector(".card-container").style.backgroundColor = "#ffb80033";
-                        document.querySelector('#icon-Card').src = '/Resource/Iconos/Card/Sun Cloud.svg'
+                        document.querySelector('#icon-Card').src = '../Resource/Iconos/Card/SunCloud.svg'
                         document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()   
                     }
                     else if (ObjJson.weather[0].main == 'Clouds') {
                         document.body.style.backgroundImage = "url('Resource/WallapaperState/NubladoWall.png')"
                         document.querySelector(".card-container").style.backgroundColor = "#18293533";
-                        document.querySelector('#icon-Card').src = 'Resource/Iconos/Card/Clouds.svg'
+                        document.querySelector('#icon-Card').src = '../Resource/Iconos/Card/Clouds.svg'
                         document.querySelector('#condicionClimaApi').innerHTML = 'NUBLADO'
 
                     }
                     else if (ObjJson.weather[0].main == 'Rain'){
                         document.body.style.backgroundImage = "url('Resource/WallapaperState/LluviaWall.png')"
                         document.querySelector(".card-container").style.backgroundColor = "#52619633";
-                        document.querySelector('#icon-Card').src = 'Resource/Iconos/Card/Rain Cloud.svg'
+                        document.querySelector('#icon-Card').src = '../Resource/Iconos/Card/Rain Cloud.svg'
                         document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
 
                     }
                     else if (ObjJson.weather[0].main == 'Thunderstorm'){
                         document.body.style.backgroundImage = "url('Resource/WallapaperState/TormentaWall.png')"
                         document.querySelector(".card-container").style.backgroundColor = "#18293533";
-                        document.querySelector('#icon-Card').src = 'Resource/Iconos/Card/Thunder Cloud.svg'
+                        document.querySelector('#icon-Card').src = '../Resource/Iconos/Card/Thunder Cloud.svg'
                         document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
                     }
                     else if (ObjJson.weather[0].main == 'Snow'){
                         document.body.style.backgroundImage = "url('Resource/WallapaperState/NevadoWall.png')"
                         document.querySelector(".card-container").style.backgroundColor = "#6d949733";
-                        document.querySelector('#icon-Card').src = 'Resource/Iconos/Card/Snow Cloud.svg'
+                        document.querySelector('#icon-Card').src = '../Resource/Iconos/Card/Snow Cloud.svg'
                         document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
                     } 
                 }
                 else{
                     document.body.style.backgroundImage = "url('Resource/WallapaperState/NocheWall.png')"
-                    document.querySelector('#icon-Card').src = 'Resource/Iconos/Card/Night Cloud.svg'
+                    document.querySelector('#icon-Card').src = '../Resource/Iconos/Card/Night Cloud.svg'
                     /*document.querySelector('.card-container').classList.add("color-noche");*/
                     document.querySelector(".card-container").style.backgroundColor = "#62626233";
                     document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
@@ -135,7 +135,12 @@ window.onload = () => {
     
         let fechaActual = año + mes + dia + hora
         var newObjeto = Database.child(fechaActual);
-        fetch(LinkCurrentPeticion, {mode: 'no-cors'})
+        fetch('PHP/request.php', {
+            method: 'POST',
+            body : new URLSearchParams({
+                'url' : LinkCurrentPeticion
+            })
+        })
             .then((response) => {
                 return response.json();
             })
@@ -150,7 +155,12 @@ window.onload = () => {
             })
 
         var newObjeto2 = Database.child("0-CurrentData");
-        fetch(LinkCurrentPeticion, {mode: 'no-cors'})
+        fetch('PHP/request.php', {
+            method: 'POST',
+            body : new URLSearchParams({
+                'url' : LinkCurrentPeticion
+            })
+        })
             .then((response) => {
                 return response.json();
             })
@@ -168,7 +178,12 @@ window.onload = () => {
             const fecha = new Date();
             const hora = fecha.getHours()
             var newObjeto = Database.child("0-CurrentData");
-            fetch(LinkCurrentPeticion, {mode: 'no-cors'})
+            fetch('PHP/request.php', {
+                method: 'POST',
+                body : new URLSearchParams({
+                    'url' : LinkCurrentPeticion
+                })
+            })
             .then((response) => {
                 return response.json();
             })
