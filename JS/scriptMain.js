@@ -1,14 +1,14 @@
 window.onload = () => {
     
         
-    let LinkA = 'https://api.openweathermap.org/data/2.5/weather?lat=27.48&lon=-99.5105&units=metric&lang=sp&appid=75388a5617c4890016f8215a20d3ac3f';
+    let apiFree = 'https://api.openweathermap.org/data/2.5/weather?lat=27.48&lon=-99.5105&units=metric&lang=sp&appid=75388a5617c4890016f8215a20d3ac3f';
     
     async function CargarWallpaper() {
         
         let HoraActual = new Date();
         var ObjJson = "initial";
 
-        await fetch(LinkA)
+        await fetch(apiFree)
             .then(res => res.json())
             .then(data => {
                 ObjJson = data;
@@ -17,41 +17,41 @@ window.onload = () => {
                 if(HoraActual.getHours() >= 8  && HoraActual.getHours() < 20) {
 
                     if (ObjJson.weather[0].main == 'Clear' || ObjJson.weather[0].description == 'nubes dispersas') {
-                        document.body.style.backgroundImage = "url('../../ClimaITNL/Resource/WallapaperState/SoleadoWall.png')"
+                        document.body.style.backgroundImage = "url('https://firebasestorage.googleapis.com/v0/b/climaitnl.appspot.com/o/WallpaperState%2FSoleadoWall.png?alt=media&token=fdc63a2b-1d16-4594-b015-0ac9730d3f49')"
                         document.querySelector(".card-container").style.backgroundColor = "#ffb80033";
-                        document.querySelector('#icon-Card').src = '../../ClimaITNL//Resource/Iconos/Card/Sun Cloud.svg'
+                        document.querySelector('#icon-Card').src = 'https://firebasestorage.googleapis.com/v0/b/climaitnl.appspot.com/o/Iconos%2FCard%2FSunCloud.svg?alt=media&token=f31c9db2-f683-41d3-bc67-35ddad7e82a7'
                         document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()   
                     }
                     else if (ObjJson.weather[0].main == 'Clouds') {
-                        document.body.style.backgroundImage = "url('../../ClimaITNL/Resource/WallapaperState/NubladoWall.png')"
+                        document.body.style.backgroundImage = "url('https://firebasestorage.googleapis.com/v0/b/climaitnl.appspot.com/o/WallpaperState%2FNubladoWall.png?alt=media&token=eaf0f3af-b7d2-40ae-b380-4ac47e249a8d')"
                         document.querySelector(".card-container").style.backgroundColor = "#18293533";
-                        document.querySelector('#icon-Card').src = '../../ClimaITNL/Resource/Iconos/Card/Clouds.svg'
+                        document.querySelector('#icon-Card').src = 'https://firebasestorage.googleapis.com/v0/b/climaitnl.appspot.com/o/Iconos%2FCard%2FClouds.svg?alt=media&token=0b310a42-b288-4d58-86fc-4442fb84b04d'
                         document.querySelector('#condicionClimaApi').innerHTML = 'NUBLADO'
 
                     }
                     else if (ObjJson.weather[0].main == 'Rain'){
-                        document.body.style.backgroundImage = "url('../../ClimaITNL/Resource/WallapaperState/LluviaWall.png')"
+                        document.body.style.backgroundImage = "url('https://firebasestorage.googleapis.com/v0/b/climaitnl.appspot.com/o/WallpaperState%2FLluviaWall.png?alt=media&token=087a589a-866f-4bb3-a973-d9dad1e47d77')"
                         document.querySelector(".card-container").style.backgroundColor = "#52619633";
-                        document.querySelector('#icon-Card').src = '../../ClimaITNL/Resource/Iconos/Card/Rain Cloud.svg'
+                        document.querySelector('#icon-Card').src = 'https://firebasestorage.googleapis.com/v0/b/climaitnl.appspot.com/o/Iconos%2FCard%2FRain%20Cloud.svg?alt=media&token=3db1b0b9-1bca-4f98-b46c-c920610c6cae'
                         document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
 
                     }
                     else if (ObjJson.weather[0].main == 'Thunderstorm'){
-                        document.body.style.backgroundImage = "url('../../ClimaITNL/Resource/WallapaperState/TormentaWall.png')"
+                        document.body.style.backgroundImage = "url('https://firebasestorage.googleapis.com/v0/b/climaitnl.appspot.com/o/WallpaperState%2FTormentaWall.png?alt=media&token=8a6dd058-4831-44d4-9d7b-381319fbcd32')"
                         document.querySelector(".card-container").style.backgroundColor = "#18293533";
-                        document.querySelector('#icon-Card').src = '../../ClimaITNL/Resource/Iconos/Card/Thunder Cloud.svg'
+                        document.querySelector('#icon-Card').src = 'https://firebasestorage.googleapis.com/v0/b/climaitnl.appspot.com/o/Iconos%2FCard%2FThunder%20Cloud.svg?alt=media&token=a0ad9786-e23c-4bd7-887c-021f56a28e5d'
                         document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
                     }
                     else if (ObjJson.weather[0].main == 'Snow'){
-                        document.body.style.backgroundImage = "url('../../ClimaITNL/Resource/WallapaperState/NevadoWall.png')"
+                        document.body.style.backgroundImage = "url('https://firebasestorage.googleapis.com/v0/b/climaitnl.appspot.com/o/WallpaperState%2FNevadoWall.png?alt=media&token=b2f3165a-9ea0-4361-9476-ef0ddd61569d')"
                         document.querySelector(".card-container").style.backgroundColor = "#6d949733";
-                        document.querySelector('#icon-Card').src = '../../ClimaITNL/Resource/Iconos/Card/Snow Cloud.svg'
+                        document.querySelector('#icon-Card').src = 'https://firebasestorage.googleapis.com/v0/b/climaitnl.appspot.com/o/Iconos%2FCard%2FSnow%20Cloud.svg?alt=media&token=4452d40b-bc49-4639-b401-69360a869aa6'
                         document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
                     } 
                 }
                 else{
-                    document.body.style.backgroundImage = "url('../../ClimaITNL/Resource/WallapaperState/NocheWall.png')"
-                    document.querySelector('#icon-Card').src = '../../ClimaITNL/Resource/Iconos/Card/Night Cloud.svg'
+                    document.body.style.backgroundImage = "url('https://firebasestorage.googleapis.com/v0/b/climaitnl.appspot.com/o/WallpaperState%2FNocheWall.png?alt=media&token=ad3359a4-e0b4-4a77-b351-7d06661c6f92')"
+                    document.querySelector('#icon-Card').src = 'https://firebasestorage.googleapis.com/v0/b/climaitnl.appspot.com/o/Iconos%2FCard%2FNight%20Cloud.svg?alt=media&token=6e0a2eac-166f-4749-a89d-5793432aba30'
                     /*document.querySelector('.card-container').classList.add("color-noche");*/
                     document.querySelector(".card-container").style.backgroundColor = "#62626233";
                     document.querySelector('#condicionClimaApi').innerHTML = ObjJson.weather[0].description.toUpperCase()
@@ -135,7 +135,12 @@ window.onload = () => {
     
         let fechaActual = año + mes + dia + hora
         var newObjeto = Database.child(fechaActual);
-        fetch(LinkCurrentPeticion, {mode: 'no-cors'})
+        fetch('PHP/request.php', {
+            method: 'POST',
+            body : new URLSearchParams({
+                'url' : LinkCurrentPeticion
+            })
+        })
             .then((response) => {
                 return response.json();
             })
@@ -150,7 +155,12 @@ window.onload = () => {
             })
 
         var newObjeto2 = Database.child("0-CurrentData");
-        fetch(LinkCurrentPeticion, {mode: 'no-cors'})
+        fetch('PHP/request.php', {
+            method: 'POST',
+            body : new URLSearchParams({
+                'url' : LinkCurrentPeticion
+            })
+        })
             .then((response) => {
                 return response.json();
             })
@@ -168,7 +178,12 @@ window.onload = () => {
             const fecha = new Date();
             const hora = fecha.getHours()
             var newObjeto = Database.child("0-CurrentData");
-            fetch(LinkCurrentPeticion, {mode: 'no-cors'})
+            fetch('PHP/request.php', {
+                method: 'POST',
+                body : new URLSearchParams({
+                    'url' : LinkCurrentPeticion
+                })
+            })
             .then((response) => {
                 return response.json();
             })
