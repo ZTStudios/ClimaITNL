@@ -488,7 +488,7 @@ body{
     width: 100%;
     height: 100%;
     position: absolute;
-    background-image: url("../Resource/Background-splash.svg");
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/climaitnl.appspot.com/o/Background-splash.svg?alt=media&token=5ba51d48-cc3c-4263-a564-2e4aabea880c");
     background-size: cover;
     display: flex;
     flex-direction: column;
