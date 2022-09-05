@@ -537,7 +537,7 @@ body{
 
 /* ======================> MEDIA QUERYS */
 
-@media (max-width: 2560px) {
+@media (max-width: 2560px) and (min-height: 1440px) {
     
     .card-container {
         margin-top: 100px;
