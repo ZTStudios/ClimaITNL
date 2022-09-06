@@ -135,7 +135,7 @@ window.onload = () => {
     
         let fechaActual = año + mes + dia + hora
         var newObjeto = Database.child(fechaActual);
-        fetch('PHP/request.php', {
+        fetch('../PHP/request.php', {
             method: 'POST',
             body : new URLSearchParams({
                 'url' : LinkCurrentPeticion
@@ -155,7 +155,7 @@ window.onload = () => {
             })
 
         var newObjeto2 = Database.child("0-CurrentData");
-        fetch('PHP/request.php', {
+        fetch('../PHP/request.php', {
             method: 'POST',
             body : new URLSearchParams({
                 'url' : LinkCurrentPeticion
@@ -178,7 +178,7 @@ window.onload = () => {
             const fecha = new Date();
             const hora = fecha.getHours()
             var newObjeto = Database.child("0-CurrentData");
-            fetch('PHP/request.php', {
+            fetch('../PHP/request.php', {
                 method: 'POST',
                 body : new URLSearchParams({
                     'url' : LinkCurrentPeticion
