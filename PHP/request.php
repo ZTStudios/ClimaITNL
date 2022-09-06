@@ -1,6 +1,6 @@
 <?php 
 
-$url = $_GET['url'];
+$url = $_POST['url'];
 
 $request = file_get_contents($url);
 
